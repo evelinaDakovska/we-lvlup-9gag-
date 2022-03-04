@@ -4,10 +4,10 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ["airbnb", "airbnb/hooks"],
+  extends: ['airbnb', 'airbnb/hooks'],
   parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
+    ecmaVersion: 'latest',
+    sourceType: 'module',
   },
   rules: {},
 };
