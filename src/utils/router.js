@@ -1,19 +1,35 @@
 const route = (event) => {
   event = event || window.event;
   event.preventDefault();
+  if (
+    `http://127.0.0.1:5500${window.location.pathname}` === event.target.href
+  ) {
+    return;
+  }
   window.history.pushState({}, "", event.target.href);
   handleLocation();
 };
 
 const routes = {
-  "/": { path: "./src/pages/home.html", script: "./src/components/home.js" },
+  "/": {
+    path: "./src/components/homePage/home.html",
+    script: "./src/components/homePage/home.js",
+    style: "./src/components/homePage/home.css",
+  },
+  "/index.html": {
+    path: "./src/components/homePage/home.html",
+    script: "./src/components/homePage/home.js",
+    style: "./src/components/homePage/home.css",
+  },
   "/login": {
-    path: "./src/pages/login.html",
-    script: "./src/components/login.js",
+    path: "./src/components/loginPage/login.html",
+    script: "./src/components/loginPage/login.js",
+    style: "./src/components/loginPage/login.css",
   },
   "/register": {
-    path: "./src/pages/register.html",
-    script: "./src/components/register.js",
+    path: "./src/components/registerPage/register.html",
+    script: "./src/components/registerPage/register.js",
+    style: "./src/components/registerPage/register.css",
   },
 };
 
@@ -26,12 +42,16 @@ const handleLocation = async () => {
   } catch (e) {
     html = "Error";
   }
-  let a = document.getElementById("main-content");
-  a.innerHTML = html;
+  let content = document.getElementById("main-content");
+  content.innerHTML = html;
   const script = document.createElement("script");
   script.src = route.script;
   script.type = "text/javascript";
-  a.appendChild(script);
+  content.appendChild(script);
+  const style = document.createElement("link");
+  style.href = route.style;
+  style.rel = "stylesheet";
+  content.appendChild(style);
 };
 
 window.onpopstate = handleLocation;
