@@ -18,43 +18,53 @@
       integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">9gag</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li><a class="navbar-link">🔀 Shuffle</a></li>
-            <li><a class="navbar-link">📱 Get App</a></li>
-            <li><a class="navbar-link">🔞</a></li>
-            <li><a class="navbar-link">Donate</a></li>
-            <li><a class="navbar-link">UA</a></li>
-            <li><a class="navbar-link">Crypto</a></li>
-            <li><a class="navbar-link">Confession</a></li>
-            <li><a class="navbar-link">Car</a></li>
-            <li><a class="navbar-link">Ask Brasil</a></li>
-            <li><a class="navbar-link">Crypto</a></li>
-            <li><a class="navbar-link">🎹</a></li>
-          </ul>
-          <div class="d-flex">
-            <li><a class="navbar-link">Log in</a></li>
-            <li><a class="navbar-link" id="buttonSignInGoogle">Sign up</a></li>
-          </div>
-        </div>
+    <nav class="navigation">
+      <a class="menu" href="#" /><img src="https://img.icons8.com/ios-glyphs/30/000000/menu--v1.png"</a>
+      <a class="title" href="/"> 9gag</a>
+      <div class="topic-buttons">
+        <a class="topic"><img src="https://img.icons8.com/emoji/20/000000/shiffle-tracks-button-emoji.png"/> Shuffle</a>
+        <a class="topic"><img src="https://img.icons8.com/external-xnimrodx-lineal-color-xnimrodx/20/000000/external-app-infographic-and-chart-xnimrodx-lineal-color-xnimrodx.png"/> Get App</a>
+        <a class="topic"><img src="https://img.icons8.com/emoji/20/000000/no-one-under-eighteen-emoji.png"/></a>
+        <a class="topic">Donate</a>
+        <a class="topic">UA</a>
+        <a class="topic">Crypto</a>
+        <a class="topic">Confession</a>
+        <a class="topic">Car</a>
+        <a class="topic">Ask Brasil</a>
+        <a class="topic">Crypto</a>
+      </div>
+      <div class="login-signup">
+        <a class="login-button" href="/login">Log in</a>
+        <a class="navbar-link">Sign up</a>
       </div>
     </nav>
+    <div class="content">
+    <div class="left-menu">
+      <div class="gag-topics">
+        <a class="topic"> <img src="https://img.icons8.com/material/20/000000/home--v5.png"/> Hot</a>
+        <a class="topic"> <img src="https://img.icons8.com/fluency-systems-filled/20/000000/chart-arrow-rise.png"/> Trending</a>
+        <a class="topic"> <img src="https://img.icons8.com/material-outlined/20/000000/clock--v1.png"/> Fresh</a>
+        <a class="topic"> <img src="https://img.icons8.com/external-phatplus-solid-phatplus/20/000000/external-chart-business-ecosystem-phatplus-solid-phatplus.png"/> Top</a>
+        <a class="topic"> <img src="https://img.icons8.com/ios-glyphs/20/000000/marker--v1.png"/> Bulgaria</a>
+      </div>
+      <div class="popular-topics">
+        <a class="topic"> Funny</a>
+        <a class="topic"> Latest news</a>
+        <a class="topic"> NSFW</a>
+        <a class="topic"> Politics</a>
+        <a class="topic"> Girl</a>
+        <a class="topic"> WTF</a>
+        <a class="topic"> Cryptocurrency</a>
+        <a class="topic"> Anime & Manga</a>
+        <a class="topic"> Random</a>
+      </div>
+    </div>
+    <div id="main-content">Main Content</div>
+  </div>
+
     <script type="module" src="./src/index.js"></script>
     <script type="module" src="./src/components/login.js"></script>
   </body>
