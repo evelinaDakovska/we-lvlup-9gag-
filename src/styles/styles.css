@@ -1,3 +1,9 @@
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0 100px;
+}
+
 .navigation {
   display: flex;
   justify-content: space-around;
@@ -9,11 +15,13 @@
 
 .content {
   display: flex;
+  justify-content: space-between;
 }
 
 .left-menu {
-  height: 100% x;
+  height: 100%;
   width: 200px;
+  margin: 30px;
 }
 .left-menu .gag-topics,
 .left-menu .popular-topics {
@@ -22,7 +30,7 @@
   width: 80%;
 }
 .left-menu .gag-topics {
-  height: 50px;
+  margin-bottom: 30px;
 }
 
 /*# sourceMappingURL=styles.css.map */

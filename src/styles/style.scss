@@ -1,7 +1,12 @@
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0 100px;
+}
+
 .navigation {
   display: flex;
   justify-content: space-around;
-
   * {
     text-decoration: none;
     color: black;
@@ -10,11 +15,13 @@
 
 .content {
   display: flex;
+  justify-content: space-between;
 }
 
 .left-menu {
-  height: 100%x;
+  height: 100%;
   width: 200px;
+  margin: 30px;
   .gag-topics,
   .popular-topics {
     display: flex;
@@ -22,6 +29,6 @@
     width: 80%;
   }
   .gag-topics {
-    height: 50px;
+    margin-bottom: 30px;
   }
 }
