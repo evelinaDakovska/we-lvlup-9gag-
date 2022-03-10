@@ -19,6 +19,7 @@ body {
 }
 
 .left-menu {
+  background-color: #f6f6f6;
   height: 100%;
   width: 200px;
   margin: 30px;
@@ -31,6 +32,10 @@ body {
 }
 .left-menu .gag-topics {
   margin-bottom: 30px;
+}
+
+#right-menu {
+  background-color: #f6f6f6;
 }
 
 /*# sourceMappingURL=styles.css.map */
