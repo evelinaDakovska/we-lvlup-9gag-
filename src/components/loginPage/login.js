@@ -1,27 +1,14 @@
-/* import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-analytics.js";
 import {
-  GoogleAuthProvider,
   getAuth,
   signInWithPopup,
+  GoogleAuthProvider,
+  FacebookAuthProvider,
 } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyB_Wv28yBKGVSO3hVXzNtvUs6nJ3plw0Gw",
-  authDomain: "gag-clone-78890.firebaseapp.com",
-  projectId: "gag-clone-78890",
-  storageBucket: "gag-clone-78890.appspot.com",
-  messagingSenderId: "317040464210",
-  appId: "1:317040464210:web:9edeabffcf78e5942e2a8b",
-  measurementId: "G-NQJK277K5J",
-};
-
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 
 const auth = getAuth();
 
-const signInWithGoogle = () => {
+const logInWithGoogle = () => {
+  console.log("success google");
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider)
     .then((result) => {
@@ -39,7 +26,34 @@ const signInWithGoogle = () => {
       const credential = GoogleAuthProvider.credentialFromError(error);
     });
 };
-$("#buttonSignInGoogle").click(signInWithGoogle);
- */
 
-console.log('login');
+function logInWithFacebook() {
+  const provider = new FacebookAuthProvider();
+  console.log("success facebook");
+
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      // The signed-in user info.
+      const user = result.user;
+
+      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+      const credential = FacebookAuthProvider.credentialFromResult(result);
+      const accessToken = credential.accessToken;
+
+      // ...
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.email;
+      // The AuthCredential type that was used.
+      const credential = FacebookAuthProvider.credentialFromError(error);
+
+      // ...
+    });
+}
+
+$("#buttonSignInGoogle").click(logInWithGoogle);
+$("#buttonSignInFacebook").click(logInWithFacebook);
