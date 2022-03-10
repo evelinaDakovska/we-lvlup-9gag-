@@ -22,12 +22,29 @@
   </head>
   <body>
     <nav class="navigation">
-      <a class="menu" href="#" /><img src="https://img.icons8.com/ios-glyphs/30/000000/menu--v1.png"</a>
-      <a class="title" href="/"> 9gag</a>
+      <div>
+        <a class="menu"
+          ><img src="https://img.icons8.com/ios-glyphs/30/000000/menu--v1.png"
+        /></a>
+        <a class="title" href="/" onclick="route()"> 9gag</a>
+      </div>
       <div class="topic-buttons">
-        <a class="topic"><img src="https://img.icons8.com/emoji/20/000000/shiffle-tracks-button-emoji.png"/> Shuffle</a>
-        <a class="topic"><img src="https://img.icons8.com/external-xnimrodx-lineal-color-xnimrodx/20/000000/external-app-infographic-and-chart-xnimrodx-lineal-color-xnimrodx.png"/> Get App</a>
-        <a class="topic"><img src="https://img.icons8.com/emoji/20/000000/no-one-under-eighteen-emoji.png"/></a>
+        <a class="topic"
+          ><img
+            src="https://img.icons8.com/emoji/20/000000/shiffle-tracks-button-emoji.png"
+          />
+          Shuffle</a
+        >
+        <a class="topic"
+          ><img
+            src="https://img.icons8.com/external-xnimrodx-lineal-color-xnimrodx/20/000000/external-app-infographic-and-chart-xnimrodx-lineal-color-xnimrodx.png"
+          />
+          Get App</a
+        >
+        <a class="topic"
+          ><img
+            src="https://img.icons8.com/emoji/20/000000/no-one-under-eighteen-emoji.png"
+        /></a>
         <a class="topic">Donate</a>
         <a class="topic">UA</a>
         <a class="topic">Crypto</a>
@@ -37,35 +54,61 @@
         <a class="topic">Crypto</a>
       </div>
       <div class="login-signup">
-        <a class="login-button" href="/login">Log in</a>
-        <a class="navbar-link">Sign up</a>
+        <a class="login-button" href="/login" onclick="route()">Log in</a>
+        <a class="navbar-link" href="/register" onclick="route()">Sign up</a>
       </div>
     </nav>
     <div class="content">
-    <div class="left-menu">
-      <div class="gag-topics">
-        <a class="topic"> <img src="https://img.icons8.com/material/20/000000/home--v5.png"/> Hot</a>
-        <a class="topic"> <img src="https://img.icons8.com/fluency-systems-filled/20/000000/chart-arrow-rise.png"/> Trending</a>
-        <a class="topic"> <img src="https://img.icons8.com/material-outlined/20/000000/clock--v1.png"/> Fresh</a>
-        <a class="topic"> <img src="https://img.icons8.com/external-phatplus-solid-phatplus/20/000000/external-chart-business-ecosystem-phatplus-solid-phatplus.png"/> Top</a>
-        <a class="topic"> <img src="https://img.icons8.com/ios-glyphs/20/000000/marker--v1.png"/> Bulgaria</a>
+      <div class="left-menu">
+        <div class="gag-topics">
+          <a class="topic">
+            <img src="https://img.icons8.com/material/20/000000/home--v5.png" />
+            Hot</a
+          >
+          <a class="topic">
+            <img
+              src="https://img.icons8.com/fluency-systems-filled/20/000000/chart-arrow-rise.png"
+            />
+            Trending</a
+          >
+          <a class="topic">
+            <img
+              src="https://img.icons8.com/material-outlined/20/000000/clock--v1.png"
+            />
+            Fresh</a
+          >
+          <a class="topic">
+            <img
+              src="https://img.icons8.com/external-phatplus-solid-phatplus/20/000000/external-chart-business-ecosystem-phatplus-solid-phatplus.png"
+            />
+            Top</a
+          >
+          <a class="topic">
+            <img
+              src="https://img.icons8.com/ios-glyphs/20/000000/marker--v1.png"
+            />
+            Bulgaria</a
+          >
+        </div>
+        <div class="popular-topics">
+          <a class="topic"> Funny</a>
+          <a class="topic"> Latest news</a>
+          <a class="topic"> NSFW</a>
+          <a class="topic"> Politics</a>
+          <a class="topic"> Girl</a>
+          <a class="topic"> WTF</a>
+          <a class="topic"> Cryptocurrency</a>
+          <a class="topic"> Anime & Manga</a>
+          <a class="topic"> Random</a>
+        </div>
       </div>
-      <div class="popular-topics">
-        <a class="topic"> Funny</a>
-        <a class="topic"> Latest news</a>
-        <a class="topic"> NSFW</a>
-        <a class="topic"> Politics</a>
-        <a class="topic"> Girl</a>
-        <a class="topic"> WTF</a>
-        <a class="topic"> Cryptocurrency</a>
-        <a class="topic"> Anime & Manga</a>
-        <a class="topic"> Random</a>
+      <div id="main-content"></div>
+      <div id="right-menu">
+        <div>RIGHT CONTENT</div>
       </div>
     </div>
-    <div id="main-content">Main Content</div>
-  </div>
 
     <script type="module" src="./src/index.js"></script>
-    <script type="module" src="./src/components/login.js"></script>
+    <script type="module" src="./src/utils/router.js"></script>
   </body>
 </html>
