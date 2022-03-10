@@ -1,3 +1,27 @@
-h1 {
-  color: blue;
+.navigation {
+  display: flex;
+  justify-content: space-around;
+
+  * {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+.content {
+  display: flex;
+}
+
+.left-menu {
+  height: 100%x;
+  width: 200px;
+  .gag-topics,
+  .popular-topics {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+  }
+  .gag-topics {
+    height: 50px;
+  }
 }

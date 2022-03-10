@@ -1,5 +1,28 @@
-h1 {
-  color: blue;
+.navigation {
+  display: flex;
+  justify-content: space-around;
+}
+.navigation * {
+  text-decoration: none;
+  color: black;
+}
+
+.content {
+  display: flex;
+}
+
+.left-menu {
+  height: 100% x;
+  width: 200px;
+}
+.left-menu .gag-topics,
+.left-menu .popular-topics {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+.left-menu .gag-topics {
+  height: 50px;
 }
 
 /*# sourceMappingURL=styles.css.map */
