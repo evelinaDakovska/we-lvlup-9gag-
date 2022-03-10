@@ -46,7 +46,7 @@ const handleLocation = async () => {
   content.innerHTML = html;
   const script = document.createElement("script");
   script.src = route.script;
-  script.type = "text/javascript";
+  script.type = "module";
   content.appendChild(script);
   const style = document.createElement("link");
   style.href = route.style;
