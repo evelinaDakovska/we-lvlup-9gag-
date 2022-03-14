@@ -12,24 +12,24 @@ const route = (event) => {
 
 const routes = {
   "/": {
-    path: "./src/components/homePage/home.html",
-    script: "./src/components/homePage/home.js",
-    style: "./src/components/homePage/home.css",
+    path: "./src/components/HomePage/home.html",
+    script: "./src/components/HomePage/home.js",
+    style: "./src/components/HomePage/home.css",
   },
   "/index.html": {
-    path: "./src/components/homePage/home.html",
-    script: "./src/components/homePage/home.js",
-    style: "./src/components/homePage/home.css",
+    path: "./src/components/HomePage/home.html",
+    script: "./src/components/HomePage/home.js",
+    style: "./src/components/HomePage/home.css",
   },
   "/login": {
-    path: "./src/components/loginPage/login.html",
-    script: "./src/components/loginPage/login.js",
-    style: "./src/components/loginPage/login.css",
+    path: "./src/components/LoginPage/login.html",
+    script: "./src/components/LoginPage/login.js",
+    style: "./src/components/LoginPage/login.css",
   },
   "/register": {
-    path: "./src/components/registerPage/register.html",
-    script: "./src/components/registerPage/register.js",
-    style: "./src/components/registerPage/register.css",
+    path: "./src/components/RegisterPage/register.html",
+    script: "./src/components/RegisterPage/register.js",
+    style: "./src/components/RegisterPage/register.css",
   },
 };
 
