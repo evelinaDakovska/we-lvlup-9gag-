@@ -1,7 +1,10 @@
 body {
   display: flex;
   flex-direction: column;
-  margin: 0 100px;
+  color: #000;
+  font: 15px -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial, Helvetica, Geneva, sans-serif;
+  width: 100%;
+  align-items: center;
 }
 
 .navigation {
@@ -12,18 +15,30 @@ body {
 .navigation * {
   text-decoration: none;
   color: black;
+  line-height: 48px;
+  font-weight: 700;
+  padding: 0 8px;
+}
+
+#gagTitle {
+  font-size: 25px;
+}
+
+.login-signup * {
+  color: #999;
+  font-weight: 700;
 }
 
 .content {
   display: flex;
   justify-content: space-between;
   margin-top: 15px;
+  width: 70%;
 }
 
 .left-menu {
-  background-color: #f6f6f6;
   height: 100%;
-  width: 200px;
+  width: 20%;
 }
 .left-menu .gag-topics,
 .left-menu .popular-topics {
@@ -34,9 +49,37 @@ body {
 .left-menu .gag-topics {
   margin-bottom: 30px;
 }
+.left-menu a {
+  padding: 6px 48px;
+}
+.left-menu a:hover {
+  background-color: #cecece;
+}
 
-#right-menu {
-  background-color: #f6f6f6;
+.hidden {
+  display: none;
+}
+
+.register-button {
+  color: #fff;
+  display: inline-block;
+  line-height: 36px;
+  padding: 0 16px;
+  margin-left: 8px;
+  background-color: #07f;
+  border-radius: 18px;
+}
+
+.leftMenuTtitle {
+  line-height: 24px;
+  height: 20px;
+  padding: 6px 16px;
+  color: #999;
+  font-weight: 700;
+}
+
+#main-content {
+  width: 80%;
 }
 
 /*# sourceMappingURL=styles.css.map */
