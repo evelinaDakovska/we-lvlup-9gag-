@@ -6,7 +6,9 @@ import facebookLogin from "./loginFacebook.js";
 import googleLogin from "./loginGoogle.js";
 
 $("#signInFacebook").click(facebookLogin);
+$("#signUpFacebook").click(facebookLogin);
 $("#signInGoogle").click(googleLogin);
+$("#signUpGoogle").click(googleLogin);
 
 const emailField = document.getElementById("logEmail");
 const passwordField = document.getElementById("logPassword");
