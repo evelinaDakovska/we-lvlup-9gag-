@@ -23,7 +23,6 @@ function signInWithEmailFunction() {
       console.log("You're successfully signed in !");
       localStorage.setItem("user", userCredential.user);
       onSignIn();
-      $("#loginModal").modal("hide");
     })
     .catch((error) => {
       console.error(error);

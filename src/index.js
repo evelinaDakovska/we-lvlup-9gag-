@@ -6,6 +6,10 @@ export let auth = getAuth();
 import { signOutFunc } from "./utils/user/signOut.js";
 
 export function onSignIn() {
+  $("#loginModal").modal("hide");
+  $("#registerModal").modal("hide");
+  $("#loginModal").modal("hide");
+
   document.getElementById("loginButton").remove();
   document.getElementById("regButton").remove();
 

@@ -13,8 +13,6 @@ function googleLogin() {
       const token = credential.accessToken;
       localStorage.setItem("user", result.user);
       onSignIn();
-      $("#loginModal").modal("hide");
-      $("#registerModal").modal("hide");
     })
     .catch((error) => {
       console.log(error);
