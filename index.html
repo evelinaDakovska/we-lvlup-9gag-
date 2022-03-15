@@ -57,22 +57,22 @@
         <a class="topic">Ask Brasil</a>
         <a class="topic">Crypto</a>
       </div>
-      <div class="login-signup">
+      <div id="login-signup">
         <a class="search-button"
           ><img
             src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/20/000000/external-search-ui-dreamstale-lineal-dreamstale.png"
         /></a>
         <a
-          class="login-button"
           data-bs-toggle="modal"
           data-bs-target="#loginModal"
+          id="loginButton"
         >
           Log in
         </a>
         <a
-          class="register-button"
           data-bs-toggle="modal"
           data-bs-target="#registerModal"
+          id="regButton"
         >
           Sign up
         </a>
@@ -140,7 +140,7 @@
         <div class="modal-content">
           <div class="modal-header" id="modalReg-style">
             <h5 class="modal-title" id="registerModalLabel">Register</h5>
-            <div class="logApplications">
+            <div class="logApplications" id="logApplications">
               <button id="signUpFacebook">
                 <img src="https://img.icons8.com/fluency/20/000000/facebook-new.png"/>
                 Continue with Facebook</button>
@@ -150,13 +150,13 @@
               <button id="signUpEmail">Use email</button>
               <button id="already-member">Already a member? Log in</button>
             </div>
+            <form id="regWithEmail" class="hidden">
+              <input type="text" id="fullName" name="fullName" placeholder="Full Name" />
+              <input type="text" id="email" name="email" placeholder="Email address" />
+              <input type="password" id="regPassword" name="password" placeholder="Password" />
+              <button type="button" id="signUp">Sign up</button>
+            </form>
           </div>
-          <form id="regWithEmail" class="hidden">
-            <input type="text" id="fullName" name="fullName" placeholder="Full Name" />
-            <input type="text" id="email" name="email" placeholder="Email address" />
-            <input type="password" id="regPassword" name="password" placeholder="Password" />
-            <button type="submit" id="signUp">Sign up</button>
-          </form>
           <div id='greeting' class="hidden">You signup successfully</div>
           </div>
         </div>
@@ -187,17 +187,17 @@
             <form>
               <input
                 type="text"
-                id="login"
+                id="logEmail"
                 name="login"
                 placeholder="Username or email address"
               />
               <input
-                type="text"
+                type="password"
                 id="logPassword"
                 name="login"
                 placeholder="Password"
               />
-              <button class="fadeIn fourth">Log In</button>
+              <button type="button" class="fadeIn fourth" id="signinButton">Log In</button>
               <button href="">Forgot password?</button>
             </form>
           </div>
