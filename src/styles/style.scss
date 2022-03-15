@@ -24,7 +24,7 @@ body {
   font-size: 25px;
 }
 
-.login-signup * {
+#login-signup * {
   color: #999;
   font-weight: 700;
   cursor: pointer;
@@ -48,7 +48,7 @@ body {
     width: 80%;
   }
 
-  input[type="text"] {
+  input {
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;
@@ -94,10 +94,10 @@ body {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
-.register-button {
+#regButton {
   color: #fff;
   display: inline-block;
   line-height: 36px;
