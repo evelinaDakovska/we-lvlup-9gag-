@@ -21,7 +21,7 @@ const routes = {
     script: "./src/components/HomePage/home.js",
     style: "./src/components/HomePage/home.css",
   },
-  "/login": {
+/*   "/login": {
     path: "./src/components/LoginPage/login.html",
     script: "./src/components/LoginPage/login.js",
     style: "./src/components/LoginPage/login.css",
@@ -30,7 +30,7 @@ const routes = {
     path: "./src/components/RegisterPage/register.html",
     script: "./src/components/RegisterPage/register.js",
     style: "./src/components/RegisterPage/register.css",
-  },
+  }, */
 };
 
 const handleLocation = async () => {
