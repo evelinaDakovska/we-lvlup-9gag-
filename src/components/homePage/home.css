@@ -1,4 +1,6 @@
-.meme >img {
-    width: 70%;
-    margin: 10px;
-  }
+.meme > img {
+  width: 80%;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+}

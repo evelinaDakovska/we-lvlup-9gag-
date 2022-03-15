@@ -10,6 +10,10 @@ body {
   display: flex;
   justify-content: space-around;
   border-bottom: 2px solid #f2f2f2;
+  overflow: hidden;
+  position: fixed;
+  z-index: 9999;
+  background-color: white;
 }
 .navigation * {
   text-decoration: none;
@@ -17,6 +21,10 @@ body {
   line-height: 48px;
   font-weight: 700;
   padding: 0 8px;
+  cursor: pointer;
+}
+.navigation *:hover {
+  color: rgba(0, 0, 0, 0.6);
 }
 
 #gagTitle {
@@ -70,13 +78,14 @@ body {
 .content {
   display: flex;
   justify-content: space-between;
-  margin-top: 15px;
+  margin-top: 5%;
   width: 70%;
 }
 
 .left-menu {
   height: 100%;
-  width: 20%;
+  width: 25%;
+  position: fixed;
 }
 .left-menu .gag-topics,
 .left-menu .popular-topics {
@@ -89,9 +98,13 @@ body {
 }
 .left-menu a {
   padding: 6px;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
 }
 .left-menu a:hover {
   background-color: #cecece;
+  color: #000;
 }
 
 .hidden {
@@ -111,13 +124,15 @@ body {
 .leftMenuTtitle {
   line-height: 24px;
   height: 20px;
-  padding: 6px 16px;
+  margin: auto;
+  margin-bottom: 5px;
   color: #999;
   font-weight: 700;
 }
 
 #main-content {
   width: 80%;
+  margin-left: 25%;
 }
 
 /*# sourceMappingURL=styles.css.map */
