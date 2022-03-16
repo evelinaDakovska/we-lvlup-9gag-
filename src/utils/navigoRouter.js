@@ -13,6 +13,14 @@ router.on("/fresh", function () {
   const route = routes["/fresh"];
   reuseFuncOnRoute(route, "/fresh");
 });
+router.on("/upload", function () {
+  const route = routes["/upload"];
+  reuseFuncOnRoute(route, "/upload");
+});
+router.on("/profile", function () {
+  const route = routes["/profile"];
+  reuseFuncOnRoute(route, "/profile");
+});
 
 const routes = {
   "/": {
@@ -26,6 +34,18 @@ const routes = {
     script: "./src/components/FreshPage/fresh.js",
     style: "./src/components/FreshPage/fresh.css",
     func: "fresh",
+  },
+  "/upload": {
+    path: "./src/components/UploadPage/upload.html",
+    script: "./src/components/UploadPage/upload.js",
+    style: "./src/components/UploadPage/upload.css",
+    func: "upload",
+  },
+  "/profile": {
+    path: "./src/components/ProfilePage/profile.html",
+    script: "./src/components/ProfilePage/profile.js",
+    style: "./src/components/ProfilePage/profile.css",
+    func: "profile",
   },
 };
 
