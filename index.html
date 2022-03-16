@@ -23,6 +23,7 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+    <script src="//unpkg.com/navigo"></script>
   </head>
   <body>
     <nav class="navigation">
@@ -30,7 +31,7 @@
         <a class="menu"
           ><img src="https://img.icons8.com/ios-glyphs/30/000000/menu--v1.png"
         /></a>
-        <a class="title" href="/" onclick="route()" id="gagTitle"> 9GAG</a>
+        <a id="gagTitle" class="title" href="/" data-navigo> 9GAG</a>
       </div>
       <div class="topic-buttons">
         <a class="topic"
@@ -93,7 +94,7 @@
             />
             Trending</a
           >
-          <a class="topic">
+          <a class="topic" href="/fresh" data-navigo>
             <img
               src="https://img.icons8.com/material-outlined/20/000000/clock--v1.png"
             />
@@ -209,6 +210,6 @@
     <script type="module" src="./src/index.js"></script>
     <script type="module" src="./src/utils/user/login.js"></script>
     <script type="module" src="./src/utils/user/register.js"></script>
-    <script type="module" src="./src/utils/router.js"></script>
+    <script type="module" src="./src/utils/navigoRouter.js"></script>
   </body>
 </html>
