@@ -6,15 +6,19 @@ body {
     Helvetica, Geneva, sans-serif;
   align-items: center;
 }
-
+.navContainer {
+  width: 100%;
+  height: 7%;
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid #f2f2f2;
+}
 .navigation {
   display: flex;
   justify-content: space-around;
-  border-bottom: 2px solid #f2f2f2;
-  overflow: hidden;
+  overflow: auto;
   position: fixed;
   background-color: white;
-  height: 7%;
   * {
     text-decoration: none;
     color: black;
@@ -22,9 +26,10 @@ body {
     font-weight: 700;
     padding: 0 8px;
     cursor: pointer;
-    &:hover {
-      color: rgba(0, 0, 0, 0.6);
-    }
+  }
+  a:hover,
+  #signOutButton:hover {
+    color: rgba(0, 0, 0, 0.6);
   }
 }
 
@@ -110,7 +115,8 @@ body {
   display: none !important;
 }
 
-#regButton {
+#regButton,
+#uploadPageButton {
   color: #fff;
   display: inline-block;
   line-height: 36px;
