@@ -142,20 +142,20 @@
           <div class="modal-header" id="modalReg-style">
             <h5 class="modal-title" id="registerModalLabel">Register</h5>
             <div class="logApplications" id="logApplications">
-              <button id="signUpFacebook">
+              <button class="authButton" id="signUpFacebook">
                 <img src="https://img.icons8.com/fluency/20/000000/facebook-new.png"/>
                 Continue with Facebook</button>
-              <button id="signUpGoogle">
+              <button class="authButton" id="signUpGoogle">
                 <img src="https://img.icons8.com/color/20/000000/google-logo.png"/>
                 Continue with Google</button>
-              <button id="signUpEmail">Use email</button>
-              <button id="already-member">Already a member? Log in</button>
+              <button class="authButton" id="signUpEmail">Use email</button>
+              <button class="authButton" id="already-member">Already a member? Log in</button>
             </div>
             <form id="regWithEmail" class="hidden">
               <input type="text" id="fullName" name="fullName" placeholder="Full Name" />
               <input type="text" id="email" name="email" placeholder="Email address" />
               <input type="password" id="regPassword" name="password" placeholder="Password" />
-              <button type="button" id="signUp">Sign up</button>
+              <button class="authButton" type="button" id="signUp">Sign up</button>
             </form>
           </div>
           <div id='greeting' class="hidden">You signup successfully</div>
@@ -177,10 +177,10 @@
           <div class="modal-header" id="modalLog-style">
             <h5 class="modal-title" id="loginModalLabel">Log in</h5>
             <div class="logApplications">
-              <button id="signInFacebook">
+              <button class="authButton" id="signInFacebook">
                 <img src="https://img.icons8.com/fluency/20/000000/facebook-new.png"/>
                 Continue with Facebook</button>
-              <button id="signInGoogle">
+              <button class="authButton" id="signInGoogle">
                 <img src="https://img.icons8.com/color/20/000000/google-logo.png"/>
                 Continue with Google</button>
             </div>
@@ -198,8 +198,8 @@
                 name="login"
                 placeholder="Password"
               />
-              <button type="button" class="fadeIn fourth" id="signinButton">Log In</button>
-              <button href="">Forgot password?</button>
+              <button type="button" class="authButton" id="signinButton">Log In</button>
+              <button class="authButton" href="">Forgot password?</button>
             </form>
           </div>
         </div>

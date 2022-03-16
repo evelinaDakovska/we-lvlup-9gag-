@@ -135,4 +135,35 @@ body {
   margin-left: 25%;
 }
 
+.authButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 1px solid var(--palette-text-light);
+  box-sizing: border-box;
+  border-radius: 24px;
+  padding: 14px;
+  margin-bottom: 8px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  min-height: 48px;
+  overflow: hidden;
+}
+.authButton:hover {
+  background-color: #cecece;
+}
+
+#signinButton {
+  background-color: #0077ff;
+  color: white;
+}
+#signinButton:hover {
+  background-color: #005fcc;
+}
+
 /*# sourceMappingURL=styles.css.map */
