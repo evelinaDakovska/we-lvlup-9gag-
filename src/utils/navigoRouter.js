@@ -42,7 +42,7 @@ async function reuseFuncOnRoute(route, pathKey) {
   style.rel = "stylesheet";
   content.appendChild(style);
   router.navigate(pathKey);
-  setTimeout(() => window[route.func](), 100);
+  script.onload = () => window[route.func]();
 }
 
 router.resolve();
