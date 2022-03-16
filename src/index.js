@@ -10,21 +10,8 @@ export function onSignIn() {
   $("#registerModal").modal("hide");
   $("#loginModal").modal("hide");
 
-  document.getElementById("loginButton").remove();
-  document.getElementById("regButton").remove();
+  $("#loginButton").addClass("hidden");
+  $("#regButton").addClass("hidden");
 
-  let navBarPart = document.getElementById("login-signup");
-
-  let profileButn = document.createElement("a");
-  profileButn.setAttribute("id", "profileButton");
-  profileButn.setAttribute("href", "/profile");
-  profileButn.setAttribute("onclick", "route()");
-  profileButn.innerText = "Profile";
-  navBarPart.appendChild(profileButn);
-
-  let signOut = document.createElement("a");
-  signOut.setAttribute("id", "signOutButton");
-  signOut.innerText = "Sign Out";
-  signOut.addEventListener("click", signOutFunc);
-  navBarPart.appendChild(signOut);
+  $("#userBtns").removeClass("hidden");
 }

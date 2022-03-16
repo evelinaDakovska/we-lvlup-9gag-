@@ -24,8 +24,9 @@
       crossorigin="anonymous"
     ></script>
     <script src="//unpkg.com/navigo"></script>
-  </head>
+    <script src="https://kit.fontawesome.com/36506c84e2.js" crossorigin="anonymous"></script>  </head>
   <body>
+    <div class="navContainer fixed-top">
     <nav class="navigation">
       <div>
         <a class="menu"
@@ -78,8 +79,14 @@
           Sign up
         </a>
       </div>
-      <div class="greet-user hidden">Hello!</div>
+      
+      <div id="userBtns" class="hidden">
+        <a id='profileButton' href="/profile" data-navigo>Profile</a>
+        <a id='uploadPageButton' href="/upload" data-navigo>+ Upload</a>
+        <a id='signOutButton'>Sign Out</a>        
+      </div>
     </nav>
+  </div>
     <div class="content">
       <div class="left-menu">
         <div class="gag-topics">
