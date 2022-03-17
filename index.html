@@ -87,7 +87,12 @@
 
         <div id="userBtns" class="hidden">
           <a id="profileButton" href="/profile" data-navigo>Profile</a>
-          <a id="uploadPageButton" href="/upload" data-navigo>+ Upload</a>
+          <a
+            id="uploadPageButton"
+            data-bs-toggle="modal"
+            data-bs-target="#uploadModal"
+            >+ Upload</a
+          >
           <a id="signOutButton">Sign Out</a>
         </div>
       </nav>
@@ -253,48 +258,43 @@
     <!-- Upload modal dialog-->
     <div
       class="modal fade"
-      id="loginModal"
+      id="uploadModal"
       tabindex="-1"
-      aria-labelledby="loginModalLabel"
+      aria-labelledby="uploadModalLabel"
       aria-hidden="true"
     >
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header" id="modalLog-style">
-            <h5 class="modal-title" id="loginModalLabel">Log in</h5>
-            <div class="logApplications">
-              <button class="authButton" id="signInFacebook">
-                <img
-                  src="https://img.icons8.com/fluency/20/000000/facebook-new.png"
-                />
-                Continue with Facebook
-              </button>
-              <button class="authButton" id="signInGoogle">
-                <img
-                  src="https://img.icons8.com/color/20/000000/google-logo.png"
-                />
-                Continue with Google
-              </button>
+          <div class="modal-header uploadContainer" id="modalUpload-style">
+            <h5 id="uploadLabel">Upload a Post</h5>
+            <p>Choose how you want to upload the post</p>
+            <div id="uploadFile">
+              <p>Drop image to upload or</p>
+              <i class="fa-solid fa-file-arrow-down fa-2xl"></i>
+              <span class="btn">Choose files...</span>
             </div>
-            <p>or</p>
-            <form>
-              <input
-                type="text"
-                id="logEmail"
-                name="login"
-                placeholder="Username or email address"
-              />
-              <input
-                type="password"
-                id="logPassword"
-                name="login"
-                placeholder="Password"
-              />
-              <button type="button" class="authButton" id="signinButton">
-                Log In
-              </button>
-              <button class="authButton" href="">Forgot password?</button>
-            </form>
+            <div class="otherSource">
+              <div class="wrapper">
+                <a id="picUrlBtn" class="source">
+                  <i class="fa-solid fa-image"></i>
+                  <p>Paste image URL</p>
+                </a>
+              </div>
+              <div class="wrapper">
+                <a id="vidUrlBtn" class="source">
+                  <i class="fa-solid fa-circle-play"></i>
+                  <p>Paste Video URL</p></a
+                >
+              </div>
+              <div class="wrapper">
+                <a id="makeMemeBtn" class="source">
+                  <img
+                    src="https://img.icons8.com/color/20/000000/trollface.png"
+                  />
+                  <p>Make meme</p>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
