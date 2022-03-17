@@ -1,3 +1,1 @@
-window.profile = () => {
- console.log(profile);
-};
+window.profile = () => {};

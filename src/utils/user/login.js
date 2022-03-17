@@ -1,3 +1,7 @@
+/* eslint-disable no-undef */
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
+// eslint-disable-next-line import/extensions
 import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js";
 
 import { auth, onSignIn } from "../../index.js";
@@ -20,7 +24,6 @@ function signInWithEmailFunction() {
 
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      console.log("You're successfully signed in !");
       localStorage.setItem("user", userCredential.user);
       onSignIn();
     })

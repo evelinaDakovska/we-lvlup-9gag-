@@ -2,10 +2,10 @@ window.go = () => {
   fetch("https://api.imgflip.com/get_memes")
     .then((response) => response.json())
     .then((data) => {
-      let allMemesDiv = document.getElementById("allMemes");
-      let allMemes = data.data.memes;
+      const allMemesDiv = document.getElementById("allMemes");
+      const allMemes = data.data.memes;
 
-      let underMemeSection = `
+      const underMemeSection = `
       <div class="upVoteBtn sectionBtns">
         <i class="fa-solid fa-arrow-up fa-lg"></i>
       </div>
@@ -16,14 +16,15 @@ window.go = () => {
         <i class="fa-solid fa-message fa-lg"></i>
       </div>`;
 
+      // eslint-disable-next-line array-callback-return
       allMemes.map((x) => {
-        let memeTitle = document.createElement("h3");
+        const memeTitle = document.createElement("h3");
         memeTitle.innerText = x.name;
-        let memeImg = document.createElement("img");
+        const memeImg = document.createElement("img");
         memeImg.src = x.url;
-        let singleMeme = document.createElement("div");
+        const singleMeme = document.createElement("div");
         singleMeme.className = "meme";
-        let underMeme = document.createElement("div");
+        const underMeme = document.createElement("div");
         underMeme.className = "underMemeSection";
         underMeme.innerHTML = underMemeSection;
         singleMeme.appendChild(memeTitle);

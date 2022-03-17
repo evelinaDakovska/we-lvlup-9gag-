@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
 import {
   signInWithPopup,
   GoogleAuthProvider,
@@ -10,6 +12,7 @@ function googleLogin() {
   signInWithPopup(auth, provider)
     .then((result) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
+      // eslint-disable-next-line no-unused-vars
       const token = credential.accessToken;
       localStorage.setItem("user", result.user);
       onSignIn();

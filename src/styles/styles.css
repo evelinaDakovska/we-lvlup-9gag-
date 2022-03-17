@@ -2,7 +2,8 @@ body {
   display: flex;
   flex-direction: column;
   color: #000;
-  font: 15px -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial, Helvetica, Geneva, sans-serif;
+  font: 15px -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial,
+    Helvetica, Geneva, sans-serif;
   align-items: center;
 }
 

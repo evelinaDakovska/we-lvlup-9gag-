@@ -1,26 +1,6 @@
+// eslint-disable-next-line no-undef
 const router = new Navigo("/");
-let content = document.getElementById("main-content");
-
-router.on("/", function () {
-  const route = routes["/"];
-  reuseFuncOnRoute(route, "/");
-});
-router.on("/index.html", function () {
-  const route = routes["/"];
-  reuseFuncOnRoute(route, "/");
-});
-router.on("/fresh", function () {
-  const route = routes["/fresh"];
-  reuseFuncOnRoute(route, "/fresh");
-});
-router.on("/upload", function () {
-  const route = routes["/upload"];
-  reuseFuncOnRoute(route, "/upload");
-});
-router.on("/profile", function () {
-  const route = routes["/profile"];
-  reuseFuncOnRoute(route, "/profile");
-});
+const content = document.getElementById("main-content");
 
 const routes = {
   "/": {
@@ -50,7 +30,7 @@ const routes = {
 };
 
 async function reuseFuncOnRoute(route, pathKey) {
-  let html = await fetch(route.path).then((data) => data.text());
+  const html = await fetch(route.path).then((data) => data.text());
   content.innerHTML = html;
   const script = document.createElement("script");
   script.src = route.script;
@@ -64,5 +44,26 @@ async function reuseFuncOnRoute(route, pathKey) {
   router.navigate(pathKey);
   script.onload = () => window[route.func]();
 }
+
+router.on("/", () => {
+  const route = routes["/"];
+  reuseFuncOnRoute(route, "/");
+});
+router.on("/index.html", () => {
+  const route = routes["/"];
+  reuseFuncOnRoute(route, "/");
+});
+router.on("/fresh", () => {
+  const route = routes["/fresh"];
+  reuseFuncOnRoute(route, "/fresh");
+});
+router.on("/upload", () => {
+  const route = routes["/upload"];
+  reuseFuncOnRoute(route, "/upload");
+});
+router.on("/profile", () => {
+  const route = routes["/profile"];
+  reuseFuncOnRoute(route, "/profile");
+});
 
 router.resolve();

@@ -1,3 +1,1 @@
-window.fresh = () => {
-  console.log("works");
-};
+window.fresh = () => {};

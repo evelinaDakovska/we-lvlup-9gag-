@@ -1,3 +1,7 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable prefer-destructuring */
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
 import {
   signInWithPopup,
   FacebookAuthProvider,
@@ -12,6 +16,7 @@ function facebookLogin() {
     .then((result) => {
       localStorage.setItem("user", result.user);
       const credential = FacebookAuthProvider.credentialFromResult(result);
+
       const accessToken = credential.accessToken;
       onSignIn();
     })
