@@ -230,4 +230,10 @@ body {
   align-items: center;
 }
 
+#fakehiddenInput {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
 /*# sourceMappingURL=styles.css.map */
