@@ -14,7 +14,7 @@ function googleLogin() {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       // eslint-disable-next-line no-unused-vars
       const token = credential.accessToken;
-      localStorage.setItem("user", result.user);
+      localStorage.setItem("user", JSON.stringify(result.user));
       onSignIn();
     })
     .catch((error) => {

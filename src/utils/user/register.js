@@ -19,7 +19,7 @@ function signUpWithEmail() {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log("Signed Up Successfully !");
-        localStorage.setItem("user", userCredential.user);
+        localStorage.setItem("user", JSON.stringify(userCredential.user));
         document.getElementById("regWithEmail").classList.add("hidden");
         greeting.classList.remove("hidden");
         onSignIn();

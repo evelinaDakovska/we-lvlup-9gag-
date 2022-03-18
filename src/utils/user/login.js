@@ -24,7 +24,7 @@ function signInWithEmailFunction() {
 
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      localStorage.setItem("user", userCredential.user);
+      localStorage.setItem("user", JSON.stringify(userCredential.user));
       onSignIn();
     })
     .catch((error) => {

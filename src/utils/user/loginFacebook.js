@@ -14,7 +14,8 @@ function facebookLogin() {
 
   signInWithPopup(auth, provider)
     .then((result) => {
-      localStorage.setItem("user", result.user);
+      localStorage.setItem("user", JSON.stringify(result.user));
+
       const credential = FacebookAuthProvider.credentialFromResult(result);
 
       const accessToken = credential.accessToken;
