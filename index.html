@@ -101,7 +101,7 @@
       <div class="left-menu">
         <div class="gag-topics">
           <div class="leftMenuTtitle">9GAG</div>
-          <a class="topic">
+          <a class="topic" href="/" data-navigo>
             <img src="https://img.icons8.com/material/20/000000/home--v5.png" />
             Hot</a
           >
@@ -271,7 +271,13 @@
             <div id="uploadFile">
               <p>Drop image to upload or</p>
               <i class="fa-solid fa-file-arrow-down fa-2xl"></i>
-              <span class="btn">Choose files...</span>
+              <p>Choose files...</p>
+              <input
+                type="file"
+                id="fakehiddenInput"
+                name="uploadFile"
+                accept="image/png, image/jpeg"
+              />
             </div>
             <div class="otherSource">
               <div class="wrapper">
@@ -304,6 +310,8 @@
     <script type="module" src="./src/index.js"></script>
     <script type="module" src="./src/utils/user/login.js"></script>
     <script type="module" src="./src/utils/user/register.js"></script>
+    <script type="module" src="./src/utils/user/signOut.js"></script>
+    <script type="module" src="./src/utils/managePostData/posts.js"></script>
     <script type="module" src="./src/utils/navigoRouter.js"></script>
   </body>
 </html>
