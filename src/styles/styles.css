@@ -287,4 +287,8 @@ body {
   color: #cecece;
 }
 
+.activeLikeBtn {
+  color: #07f !important;
+}
+
 /*# sourceMappingURL=styles.css.map */
