@@ -10,6 +10,8 @@ import {
 import {
   doc,
   setDoc,
+  serverTimestamp,
+  collection,
 } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js";
 import { storage, db } from "../firebaseConfig.js";
 
@@ -19,7 +21,6 @@ export async function uploadLogic() {
   const userEmail = user.email;
   const file = document.getElementById("fakehiddenInput").files[0];
   const title = file.name.split(".")[0];
-  const time = file.lastModifiedDate;
   const metadata = { contentType: file.type };
   let fileURL;
 
@@ -35,14 +36,16 @@ export async function uploadLogic() {
     fileURL = downloadURL;
   });
 
-  await setDoc(doc(db, "home", title), {
+  await setDoc(doc(collection(db, "home")), {
     title,
     userID,
     url: fileURL,
-    likes: 0,
-    unlikes: 0,
+    likesCount: 0,
+    likes: [],
+    unlikesCount: 0,
+    unlikes: [],
     comments: {},
-    time,
+    timestamp: serverTimestamp(),
   });
 
   const uploadedSuccessfully = document.createElement("div");
@@ -59,6 +62,7 @@ export async function uploadLogic() {
     );
     uploadedSuccessfully.classList.add("hidden");
   }, 2000);
+  location.reload();
 }
 
 export function useIputClick() {
