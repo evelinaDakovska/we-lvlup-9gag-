@@ -13,6 +13,7 @@ export default function signOutFunc() {
 
       $("#loginButton").removeClass("hidden");
       $("#regButton").removeClass("hidden");
+      window.location.href = "/";
     })
     .catch((error) => {
       console.log(error);
