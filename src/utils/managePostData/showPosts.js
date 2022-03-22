@@ -17,7 +17,12 @@ export async function showPosts(orderedDB, divId) {
     const currentMeme = doc.data();
     const memeTitle = currentMeme.title;
     const memeURL = currentMeme.url;
+    const memeLikes = currentMeme.likes;
+    const memeUnlikes = currentMeme.unlikes;
     const memeID = doc.id;
+
+    const currentUser = JSON.parse(localStorage.getItem("user"));
+    const currentUserId = currentUser.uid;
 
     const allMemesDiv = document.getElementById(divId);
 
@@ -54,6 +59,13 @@ export async function showPosts(orderedDB, divId) {
     unLikeBtn.addEventListener("click", () =>
       likeUnlikeFunc(memeID, "unlike", likeBtn, unLikeBtn)
     );
+
+    if (memeLikes.includes(currentUserId)) {
+      likeBtn.classList.add("activeLikeBtn");
+    }
+    if (memeUnlikes.includes(currentUserId)) {
+      unLikeBtn.classList.add("activeLikeBtn");
+    }
 
     const commentBtn = document.createElement("div");
     commentBtn.className = "commentsBtn sectionBtns";
