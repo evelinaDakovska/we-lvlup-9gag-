@@ -8,8 +8,7 @@ import {
   getDownloadURL,
 } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-storage.js";
 import { storage } from "../firebaseConfig.js";
-import { likeFunc } from "./likeFunc.js";
-import { unLikeFunc } from "./unLikeFunc.js";
+import { likeUnlikeFunc } from "./likeUnlikeFunc.js";
 import { commentFunc } from "./commentFunc.js";
 
 export async function showPosts(orderedDB, divId) {
@@ -42,14 +41,19 @@ export async function showPosts(orderedDB, divId) {
     const likeBtn = document.createElement("div");
     likeBtn.className = "upVoteBtn sectionBtns";
     likeBtn.innerHTML = '<i class="fa-solid fa-arrow-up fa-lg"></i>';
-    likeBtn.addEventListener("click", () => likeFunc(memeID));
     underMeme.appendChild(likeBtn);
 
     const unLikeBtn = document.createElement("div");
     unLikeBtn.className = "downVoteBtn sectionBtns";
     unLikeBtn.innerHTML = '<i class="fa-solid fa-arrow-down fa-lg"></i>';
-    unLikeBtn.addEventListener("click", () => unLikeFunc(memeID));
     underMeme.appendChild(unLikeBtn);
+
+    likeBtn.addEventListener("click", () =>
+      likeUnlikeFunc(memeID, "like", likeBtn, unLikeBtn)
+    );
+    unLikeBtn.addEventListener("click", () =>
+      likeUnlikeFunc(memeID, "unlike", likeBtn, unLikeBtn)
+    );
 
     const commentBtn = document.createElement("div");
     commentBtn.className = "commentsBtn sectionBtns";
