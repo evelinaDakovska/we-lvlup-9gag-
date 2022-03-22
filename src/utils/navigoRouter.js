@@ -6,25 +6,16 @@ const routes = {
   "/": {
     path: "./src/components/HomePage/home.html",
     script: "./src/components/HomePage/home.js",
-    style: "./src/components/HomePage/home.css",
     func: "go",
   },
   "/fresh": {
     path: "./src/components/FreshPage/fresh.html",
     script: "./src/components/FreshPage/fresh.js",
-    style: "./src/components/FreshPage/fresh.css",
     func: "fresh",
-  },
-  "/upload": {
-    path: "./src/components/UploadPage/upload.html",
-    script: "./src/components/UploadPage/upload.js",
-    style: "./src/components/UploadPage/upload.css",
-    func: "upload",
   },
   "/profile": {
     path: "./src/components/ProfilePage/profile.html",
     script: "./src/components/ProfilePage/profile.js",
-    style: "./src/components/ProfilePage/profile.css",
     func: "profile",
   },
 };
@@ -37,10 +28,6 @@ async function reuseFuncOnRoute(route, pathKey) {
   script.type = "module";
   script.onload = () => window.go();
   content.appendChild(script);
-  const style = document.createElement("link");
-  style.href = route.style;
-  style.rel = "stylesheet";
-  content.appendChild(style);
   router.navigate(pathKey);
   script.onload = () => window[route.func]();
 }
@@ -56,10 +43,6 @@ router.on("/index.html", () => {
 router.on("/fresh", () => {
   const route = routes["/fresh"];
   reuseFuncOnRoute(route, "/fresh");
-});
-router.on("/upload", () => {
-  const route = routes["/upload"];
-  reuseFuncOnRoute(route, "/upload");
 });
 router.on("/profile", () => {
   const route = routes["/profile"];
