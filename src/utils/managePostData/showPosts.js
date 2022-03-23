@@ -10,6 +10,7 @@ import {
 import { storage } from "../firebaseConfig.js";
 import { likeUnlikeFunc } from "./likeUnlikeFunc.js";
 import { commentFunc } from "./commentFunc.js";
+import { router } from "../navigoRouter.js";
 
 export async function showPosts(orderedDB, divId) {
   const querySnapshot = await getDocs(orderedDB);
@@ -44,7 +45,7 @@ export async function showPosts(orderedDB, divId) {
     const memeTitleElement = document.createElement("a");
     memeTitleElement.className = "memeTitle";
     memeTitleElement.innerText = memeTitle;
-    memeTitleElement.setAttribute("href", `/meme#${memeID}`);
+    memeTitleElement.setAttribute("href", `/meme/${memeID}`);
     memeTitleElement.setAttribute("data-navigo", "");
     const singleMeme = document.createElement("div");
     singleMeme.className = "meme";
@@ -101,4 +102,5 @@ export async function showPosts(orderedDB, divId) {
     singleMeme.appendChild(underMeme);
     allMemesDiv.appendChild(singleMeme);
   });
+  router.updatePageLinks();
 }

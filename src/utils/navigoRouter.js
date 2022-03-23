@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-undef
-const router = new Navigo("/");
+export const router = new Navigo("/");
 const content = document.getElementById("main-content");
 
 const routes = {
@@ -19,22 +19,21 @@ const routes = {
     func: "profile",
   },
   "/meme": {
-    path: "./src/components/memeDetails/memeDetails.html",
-    script: "./src/components/memeDetails/memeDetails.js",
+    path: "../src/components/memeDetails/memeDetails.html",
+    script: "../src/components/memeDetails/memeDetails.js",
     func: "memeDetails",
   },
 };
 
-async function reuseFuncOnRoute(route, pathKey) {
+async function reuseFuncOnRoute(route, pathKey, memeID) {
   const html = await fetch(route.path).then((data) => data.text());
   content.innerHTML = html;
   const script = document.createElement("script");
   script.src = route.script;
   script.type = "module";
-  script.onload = () => window.go();
   content.appendChild(script);
   router.navigate(pathKey);
-  script.onload = () => window[route.func]();
+  script.onload = () => window[route.func](memeID);
 }
 
 router.on("/", () => {
@@ -53,10 +52,9 @@ router.on("/profile", () => {
   const route = routes["/profile"];
   reuseFuncOnRoute(route, "/profile");
 });
-router.on("/meme", ({ hashString }) => {
-  console.log(hashString);
-  /*   const route = routes["/meme/:id"];
-  reuseFuncOnRoute(route, "/meme/:id"); */
+router.on("/meme/:id", ({ data }) => {
+  const route = routes["/meme"];
+  reuseFuncOnRoute(route, "/meme", data);
 });
 
 router.resolve();
