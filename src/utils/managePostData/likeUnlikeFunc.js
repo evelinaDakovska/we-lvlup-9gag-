@@ -24,7 +24,7 @@ export async function likeUnlikeFunc(
   const currentUser = JSON.parse(localStorage.getItem("user"));
   const currentUserId = currentUser.uid;
 
-  if (memeCreator === currentUserId) {
+  if (memeCreator === currentUserId || !currentUserId) {
     return;
   }
 

@@ -7,7 +7,7 @@ import { auth } from "../../index.js";
 export default function signOutFunc() {
   signOut(auth)
     .then(() => {
-      localStorage.setItem("user", "");
+      localStorage.setItem("user", "{}");
 
       $("#userBtns").addClass("hidden");
 
