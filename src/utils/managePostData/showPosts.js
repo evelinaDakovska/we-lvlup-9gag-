@@ -19,6 +19,8 @@ export async function showPosts(orderedDB, divId) {
     const memeURL = currentMeme.url;
     const memeLikes = currentMeme.likes;
     const memeUnlikes = currentMeme.unlikes;
+    const likesCount = currentMeme.likesCount;
+    const unlikesCount = currentMeme.unlikesCount;
     const memeID = doc.id;
 
     const currentUser = JSON.parse(localStorage.getItem("user"));
@@ -35,6 +37,9 @@ export async function showPosts(orderedDB, divId) {
       .catch((error) => {
         console.log(error);
       });
+    const imgContainer = document.createElement("div");
+    imgContainer.className = "imgContainer";
+    imgContainer.appendChild(memeImg);
 
     const memeTitleElement = document.createElement("h3");
     memeTitleElement.innerText = memeTitle;
@@ -45,19 +50,34 @@ export async function showPosts(orderedDB, divId) {
 
     const likeBtn = document.createElement("div");
     likeBtn.className = "upVoteBtn sectionBtns";
-    likeBtn.innerHTML = '<i class="fa-solid fa-arrow-up fa-lg"></i>';
+    likeBtn.innerHTML = `<i class="fa-solid fa-arrow-up fa-lg"></i>`;
     underMeme.appendChild(likeBtn);
 
     const unLikeBtn = document.createElement("div");
     unLikeBtn.className = "downVoteBtn sectionBtns";
-    unLikeBtn.innerHTML = '<i class="fa-solid fa-arrow-down fa-lg"></i>';
+    unLikeBtn.innerHTML = `<i class="fa-solid fa-arrow-down fa-lg"></i>`;
     underMeme.appendChild(unLikeBtn);
 
+    const likeCount = document.createElement("div");
+    likeCount.innerHTML = likesCount;
+    likeBtn.appendChild(likeCount);
+
+    const unLikeCount = document.createElement("div");
+    unLikeCount.innerHTML = unlikesCount;
+    unLikeBtn.appendChild(unLikeCount);
+
     likeBtn.addEventListener("click", () =>
-      likeUnlikeFunc(memeID, "like", likeBtn, unLikeBtn)
+      likeUnlikeFunc(memeID, "like", likeBtn, unLikeBtn, likeCount, unLikeCount)
     );
     unLikeBtn.addEventListener("click", () =>
-      likeUnlikeFunc(memeID, "unlike", likeBtn, unLikeBtn)
+      likeUnlikeFunc(
+        memeID,
+        "unlike",
+        likeBtn,
+        unLikeBtn,
+        likeCount,
+        unLikeCount
+      )
     );
 
     if (memeLikes.includes(currentUserId)) {
@@ -74,7 +94,7 @@ export async function showPosts(orderedDB, divId) {
     underMeme.appendChild(commentBtn);
 
     singleMeme.appendChild(memeTitleElement);
-    singleMeme.appendChild(memeImg);
+    singleMeme.appendChild(imgContainer);
     singleMeme.appendChild(underMeme);
     allMemesDiv.appendChild(singleMeme);
   });

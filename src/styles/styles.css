@@ -260,20 +260,20 @@ body {
   width: 90%;
 }
 
-.meme > img {
-  width: 80%;
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .meme {
-  border-style: ridge;
   margin-bottom: 5%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   max-width: 70%;
+}
+.meme .imgContainer {
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+}
+.meme .imgContainer img {
+  width: 80%;
+}
+.meme h3 {
+  font-size: 20px;
 }
 
 .underMemeSection {
@@ -283,7 +283,14 @@ body {
   justify-content: space-evenly;
 }
 
-.sectionBtns:hover {
+.sectionBtns {
+  display: flex;
+  align-items: center;
+}
+.sectionBtns i {
+  padding-right: 5px;
+}
+.sectionBtnshover {
   color: #cecece;
 }
 

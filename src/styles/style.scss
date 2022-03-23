@@ -251,19 +251,19 @@ body {
   width: 90%;
 }
 
-.meme > img {
-  width: 80%;
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .meme {
-  border-style: ridge;
+  .imgContainer {
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    img {
+      width: 80%;
+    }
+  }
+  h3 {
+    font-size: 20px;
+  }
   margin-bottom: 5%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   max-width: 70%;
 }
 
@@ -274,8 +274,15 @@ body {
   justify-content: space-evenly;
 }
 
-.sectionBtns:hover {
-  color: #cecece;
+.sectionBtns {
+  display: flex;
+  align-items: center;
+  i {
+    padding-right: 5px;
+  }
+  &hover {
+    color: #cecece;
+  }
 }
 
 .activeLikeBtn {
