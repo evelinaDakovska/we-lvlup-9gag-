@@ -68,7 +68,7 @@ export async function uploadLogic() {
     );
     uploadedSuccessfully.classList.add("hidden");
   }, 2000);
-  location.reload();
+  window.location.href = "/";
 }
 
 export function useIputClick() {

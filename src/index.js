@@ -13,8 +13,8 @@ export function onSignIn() {
   $("#loginModal").modal("hide");
   $("#registerModal").modal("hide");
   $("#loginModal").modal("hide");
-
   userButtons();
+  window.location.href = "/";
 }
 
 function userButtons() {
