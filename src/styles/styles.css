@@ -272,8 +272,10 @@ body {
 .meme .imgContainer img {
   width: 80%;
 }
-.meme h3 {
+.meme .memeTitle {
   font-size: 20px;
+  color: #000;
+  text-decoration: none;
 }
 
 .underMemeSection {

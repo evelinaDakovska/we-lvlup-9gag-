@@ -18,6 +18,11 @@ const routes = {
     script: "./src/components/ProfilePage/profile.js",
     func: "profile",
   },
+  "/meme": {
+    path: "./src/components/memeDetails/memeDetails.html",
+    script: "./src/components/memeDetails/memeDetails.js",
+    func: "memeDetails",
+  },
 };
 
 async function reuseFuncOnRoute(route, pathKey) {
@@ -47,6 +52,11 @@ router.on("/fresh", () => {
 router.on("/profile", () => {
   const route = routes["/profile"];
   reuseFuncOnRoute(route, "/profile");
+});
+router.on("/meme", ({ hashString }) => {
+  console.log(hashString);
+  /*   const route = routes["/meme/:id"];
+  reuseFuncOnRoute(route, "/meme/:id"); */
 });
 
 router.resolve();

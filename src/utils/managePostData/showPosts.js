@@ -41,8 +41,11 @@ export async function showPosts(orderedDB, divId) {
     imgContainer.className = "imgContainer";
     imgContainer.appendChild(memeImg);
 
-    const memeTitleElement = document.createElement("h3");
+    const memeTitleElement = document.createElement("a");
+    memeTitleElement.className = "memeTitle";
     memeTitleElement.innerText = memeTitle;
+    memeTitleElement.setAttribute("href", `/meme#${memeID}`);
+    memeTitleElement.setAttribute("data-navigo", "");
     const singleMeme = document.createElement("div");
     singleMeme.className = "meme";
     const underMeme = document.createElement("div");
