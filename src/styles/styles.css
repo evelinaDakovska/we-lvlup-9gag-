@@ -320,4 +320,11 @@ body {
   overflow: hidden;
 }
 
+#memeDetails {
+  max-width: 70%;
+}
+#memeDetails h3 {
+  margin-bottom: 3%;
+}
+
 /*# sourceMappingURL=styles.css.map */

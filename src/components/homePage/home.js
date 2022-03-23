@@ -12,4 +12,5 @@ window.go = async () => {
   const memesRef = collection(db, "home");
   const docRef = query(memesRef, orderBy("likesCount", "desc"));
   showPosts(docRef, "allMemes");
+
 };
