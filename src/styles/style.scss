@@ -191,7 +191,8 @@ body {
 
 #uploadFile,
 .wrapper,
-#titleInput {
+#titleInput,
+#uploadBtn {
   border: 1px solid #ddd;
   &:hover {
     background-color: #f7f7f7;
@@ -279,6 +280,7 @@ body {
 .sectionBtns {
   display: flex;
   align-items: center;
+  cursor: pointer;
   i {
     padding-right: 5px;
   }
@@ -289,4 +291,20 @@ body {
 
 .activeLikeBtn {
   color: #07f !important;
+}
+
+#uploadBtn {
+  margin: 3%;
+  width: 80%;
+  box-sizing: border-box;
+  border-radius: 24px;
+  padding: 14px;
+  margin-bottom: 8px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  min-height: 48px;
+  overflow: hidden;
 }

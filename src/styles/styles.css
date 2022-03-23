@@ -196,17 +196,20 @@ body {
 
 #uploadFile,
 .wrapper,
-#titleInput {
+#titleInput,
+#uploadBtn {
   border: 1px solid #ddd;
 }
 #uploadFile:hover,
 .wrapper:hover,
-#titleInput:hover {
+#titleInput:hover,
+#uploadBtn:hover {
   background-color: #f7f7f7;
 }
 #uploadFile *,
 .wrapper *,
-#titleInput * {
+#titleInput *,
+#uploadBtn * {
   margin: 3%;
 }
 
@@ -288,6 +291,7 @@ body {
 .sectionBtns {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 .sectionBtns i {
   padding-right: 5px;
@@ -298,6 +302,22 @@ body {
 
 .activeLikeBtn {
   color: #07f !important;
+}
+
+#uploadBtn {
+  margin: 3%;
+  width: 80%;
+  box-sizing: border-box;
+  border-radius: 24px;
+  padding: 14px;
+  margin-bottom: 8px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  min-height: 48px;
+  overflow: hidden;
 }
 
 /*# sourceMappingURL=styles.css.map */

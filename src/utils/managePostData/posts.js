@@ -7,4 +7,4 @@ import { useIputClick, uploadLogic } from "./uploadLogic.js";
 export const user = localStorage.getItem("user");
 
 $("#uploadFile").click(useIputClick);
-$("#fakehiddenInput").change(uploadLogic);
+$("#uploadBtn").click(uploadLogic);
