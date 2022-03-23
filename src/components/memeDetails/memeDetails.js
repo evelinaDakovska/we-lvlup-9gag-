@@ -1,3 +1,3 @@
 window.memeDetails = async () => {
-  console.log("working");
+  console.log("it's working");
 };
