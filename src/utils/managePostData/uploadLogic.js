@@ -21,6 +21,12 @@ export async function uploadLogic() {
   const userEmail = user.email;
   const file = document.getElementById("fakehiddenInput").files[0];
   const title = $("#titleInput").val();
+
+  if (!title || !file) {
+    alert("Please add title/file!");
+    return;
+  }
+
   const metadata = { contentType: file.type };
   let fileURL;
 
