@@ -35,7 +35,7 @@ export async function likeUnlikeFunc(
   if (!currentUserId) {
     cantLikeMessage.style.backgroundColor = "#07f";
     cantLikeMessage.style.color = "white";
-    cantLikeMessage.innerText = "You should be logged in to like posts!";
+    cantLikeMessage.innerText = "You must be logged in to like posts!";
     return;
   }
 
