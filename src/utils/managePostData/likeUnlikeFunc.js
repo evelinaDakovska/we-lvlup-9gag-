@@ -14,7 +14,8 @@ export async function likeUnlikeFunc(
   likeBtn,
   unLikeBtn,
   likeCount,
-  unLikeCount
+  unLikeCount,
+  cantLikeMessage
 ) {
   const memeRef = doc(db, "home", memeID);
   const getMeme = await getDoc(memeRef);
@@ -24,7 +25,17 @@ export async function likeUnlikeFunc(
   const currentUser = JSON.parse(localStorage.getItem("user"));
   const currentUserId = currentUser.uid;
 
-  if (memeCreator === currentUserId || !currentUserId) {
+  if (memeCreator === currentUserId) {
+    cantLikeMessage.style.backgroundColor = "#07f";
+    cantLikeMessage.style.color = "white";
+    cantLikeMessage.innerText = "Dude! It's not cool to like your own posts!";
+    return;
+  }
+
+  if (!currentUserId) {
+    cantLikeMessage.style.backgroundColor = "#07f";
+    cantLikeMessage.style.color = "white";
+    cantLikeMessage.innerText = "You should be logged in to like posts!";
     return;
   }
 
