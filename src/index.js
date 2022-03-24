@@ -8,6 +8,9 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js";
 import { db } from "./utils/firebaseConfig.js";
 
+if (!localStorage.getItem("user")) {
+  localStorage.setItem("user", "{}");
+}
 if (localStorage.getItem("user") !== "{}") {
   userButtons();
 }
