@@ -327,4 +327,8 @@ body {
   margin-bottom: 3%;
 }
 
+.commentsBtn {
+  cursor: default;
+}
+
 /*# sourceMappingURL=styles.css.map */
