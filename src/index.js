@@ -16,7 +16,6 @@ if (localStorage.getItem("user") !== "{}") {
 }
 
 export const auth = getAuth();
-export let avatar;
 
 export function onSignIn() {
   $("#loginModal").modal("hide");
@@ -33,26 +32,8 @@ function userButtons() {
   $("#userBtns").removeClass("hidden");
 }
 
-function generateAvatar(text, foregroundColor, backgroundColor) {
-  const canvas = document.createElement("canvas");
-  const context = canvas.getContext("2d");
-
-  canvas.width = 30;
-  canvas.height = 30;
-
-  // Draw background
-  context.fillStyle = backgroundColor;
-  context.fillRect(0, 0, canvas.width, canvas.height);
-
-  // Draw text
-  context.font = "bold 10px Assistant";
-  context.fillStyle = foregroundColor;
-  context.textAlign = "center";
-  context.textBaseline = "middle";
-  context.fillText(text, canvas.width / 2, canvas.height / 2);
-
-  return canvas.toDataURL("image/png");
-}
+export const avatar = document.createElement("div");
+avatar.setAttribute("id", "avatar");
 
 if (localStorage.getItem("user") !== "{}") {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -63,10 +44,6 @@ if (localStorage.getItem("user") !== "{}") {
   const firstLetter = userName[0][0];
   const lastLetter = userName[1][0];
 
-  document.getElementById("avatar").src = generateAvatar(
-    `${firstLetter}${lastLetter}`,
-    "white",
-    "#005fcc"
-  );
-  avatar = generateAvatar(`${firstLetter}${lastLetter}`, "white", "#005fcc");
+  avatar.innerText = `${firstLetter}${lastLetter}`;
+  document.getElementById("profileButton").appendChild(avatar);
 }

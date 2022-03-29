@@ -2,12 +2,8 @@ import {
   doc,
   getDoc,
 } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js";
-import {
-  ref,
-  getDownloadURL,
-} from "https://www.gstatic.com/firebasejs/9.6.8/firebase-storage.js";
-import { db, storage } from "../../utils/firebaseConfig.js";
-import { likeUnlikeFunc } from "../../utils/managePostData/likeUnlikeFunc.js";
+
+import { db } from "../../utils/firebaseConfig.js";
 import { avatar } from "../../index.js";
 import { showSingleMeme } from "../../utils/managePostData/showPosts.js";
 
@@ -18,5 +14,10 @@ window.memeDetails = async (memeID) => {
 
   showSingleMeme(docSnap, "memeDetailsContainer");
 
-  document.getElementById("userAvatar").src = avatar;
+  document.getElementById("userAvatar").appendChild(avatar);
+  const currentComment = document.getElementById("currentComment");
+
+  document.getElementById("cancelComemntBtn").addEventListener("click", () => {
+    currentComment.value = "";
+  });
 };

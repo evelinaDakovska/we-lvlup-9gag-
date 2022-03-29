@@ -117,13 +117,23 @@ body {
 
 #regButton,
 #uploadPageButton {
-  color: #fff;
-  display: inline-block;
+  color: white;
+  height: 80%;
+  display: inline-flex;
+  align-items: center;
   line-height: 36px;
   padding: 0 16px;
   margin-left: 8px;
   background-color: #07f;
   border-radius: 18px;
+  &:hover {
+    background-color: #005fcc;
+  }
+}
+
+#signinButton {
+  background-color: #07f;
+  color: white;
   &:hover {
     background-color: #005fcc;
   }
@@ -167,13 +177,6 @@ body {
   overflow: hidden;
   &:hover {
     background-color: #cecece;
-  }
-}
-#signinButton {
-  background-color: rgb(0, 119, 255);
-  color: white;
-  &:hover {
-    background-color: #005fcc;
   }
 }
 
@@ -318,4 +321,91 @@ body {
 
 .commentsBtn {
   cursor: default;
+}
+
+#profileButton {
+  border-radius: 50%;
+  background-color: #07f;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  div {
+    color: white;
+  }
+  &:hover {
+    background-color: #005fcc;
+  }
+}
+
+#userBtns {
+  display: flex;
+  align-items: center;
+}
+
+#userAvatar {
+  border-radius: 50%;
+  background-color: #07f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  width: 30px;
+  margin-right: 5px;
+  height: 35px;
+}
+
+#addCommentSection {
+  display: flex;
+  margin-bottom: 3%;
+  align-items: flex-start;
+  width: 70%;
+  #textAreaSection {
+    width: 100%;
+
+    textarea {
+      resize: none;
+      height: 76px;
+      border-radius: 4px 4px 0 0;
+      width: auto;
+      border: 1px solid #e5e5e5;
+      background: #fff;
+      width: 100%;
+      &:focus {
+        outline: #0077ff solid 1px;
+      }
+    }
+    footer {
+      border: 1px solid #e5e5e5;
+      border-top: none;
+      border-radius: 0 0 4px 4px;
+      display: flex;
+      justify-content: space-evenly;
+
+      #cancelComemntBtn {
+        border-radius: 0;
+        height: 28px;
+        line-height: 20px;
+        padding: 0;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-weight: normal;
+        font-size: 14px;
+        color: #999;
+      }
+
+      #postCommentBtn {
+        border-radius: 2px;
+        border: 2px inset transparent;
+        height: 28px;
+        cursor: pointer;
+        font-weight: bold;
+        background: #07f;
+        color: #fff;
+        padding: 0 10px;
+        width: 55px;
+        margin-bottom: 1%;
+      }
+    }
+  }
 }
