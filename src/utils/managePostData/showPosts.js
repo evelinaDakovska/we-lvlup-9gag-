@@ -9,7 +9,6 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-storage.js";
 import { storage } from "../firebaseConfig.js";
 import { likeUnlikeFunc } from "./likeUnlikeFunc.js";
-import { commentFunc } from "./commentFunc.js";
 import { router } from "../navigoRouter.js";
 
 export async function showPosts(orderedDB, divId) {

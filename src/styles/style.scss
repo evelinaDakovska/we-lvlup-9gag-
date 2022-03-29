@@ -81,15 +81,18 @@ body {
 
 .content {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   margin-top: 6%;
   width: 70%;
 }
 
 .left-menu {
-  height: 100%;
   width: 20%;
-  position: fixed;
+  #menu-container {
+    width: 100%;
+    position: sticky;
+    top: 95px;
+  }
   .gag-topics,
   .popular-topics {
     display: flex;
@@ -154,7 +157,6 @@ body {
 
 #main-content {
   width: 80%;
-  margin-left: 25%;
 }
 
 .authButton {
@@ -313,7 +315,6 @@ body {
 }
 
 #memeDetails {
-  max-width: 70%;
   h3 {
     margin-bottom: 3%;
   }
@@ -408,4 +409,27 @@ body {
       }
     }
   }
+}
+
+.commentButtons {
+  display: flex;
+  .sectionBtns,
+  .replyButton {
+    margin-right: 10%;
+    color: #999 !important;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover {
+      color: #cecece !important;
+    }
+  }
+}
+
+.userNameContainer {
+  font-weight: 700;
+}
+
+.currentCommentContainer {
+  margin: 3%;
 }
