@@ -9,6 +9,7 @@ import {
 import { db } from "../firebaseConfig.js";
 
 export async function likeUnlikeFunc(
+  databaseName,
   memeID,
   action,
   likeBtn,
@@ -17,7 +18,7 @@ export async function likeUnlikeFunc(
   unLikeCount,
   cantLikeMessage
 ) {
-  const memeRef = doc(db, "home", memeID);
+  const memeRef = doc(db, databaseName, memeID);
   const getMeme = await getDoc(memeRef);
   const memeData = getMeme.data();
   const memeCreator = memeData.userID;
@@ -25,18 +26,20 @@ export async function likeUnlikeFunc(
   const currentUser = JSON.parse(localStorage.getItem("user"));
   const currentUserId = currentUser.uid;
 
-  if (memeCreator === currentUserId) {
-    cantLikeMessage.style.backgroundColor = "#07f";
-    cantLikeMessage.style.color = "white";
-    cantLikeMessage.innerText = "Dude! It's not cool to like your own posts!";
-    return;
-  }
+  if (cantLikeMessage) {
+    if (memeCreator === currentUserId) {
+      cantLikeMessage.style.backgroundColor = "#07f";
+      cantLikeMessage.style.color = "white";
+      cantLikeMessage.innerText = "Dude! It's not cool to like your own posts!";
+      return;
+    }
 
-  if (!currentUserId) {
-    cantLikeMessage.style.backgroundColor = "#07f";
-    cantLikeMessage.style.color = "white";
-    cantLikeMessage.innerText = "You must be logged in to like posts!";
-    return;
+    if (!currentUserId) {
+      cantLikeMessage.style.backgroundColor = "#07f";
+      cantLikeMessage.style.color = "white";
+      cantLikeMessage.innerText = "You must be logged in to like posts!";
+      return;
+    }
   }
 
   let currentTargetArr;
@@ -72,12 +75,16 @@ export async function likeUnlikeFunc(
     currentTargetArr.splice(currentTargetArr.indexOf(currentUserId), 1);
     currentTargetCount--;
     currentButton.classList.remove("activeLikeBtn");
-    addLikeCountToUser("delete", memeCreator);
+    if (databaseName === "home") {
+      addLikeCountToUser("delete", memeCreator);
+    }
   } else {
     currentTargetArr.push(currentUserId);
     currentTargetCount++;
     currentButton.classList.add("activeLikeBtn");
-    addLikeCountToUser("like", memeCreator);
+    if (databaseName === "home") {
+      addLikeCountToUser("like", memeCreator);
+    }
   }
   currentCountDiv.innerHTML = currentTargetCount;
 

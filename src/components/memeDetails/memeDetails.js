@@ -11,6 +11,7 @@ import {
   orderBy,
   updateDoc,
 } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js";
+import { likeUnlikeFunc } from "../../utils/managePostData/likeUnlikeFunc.js";
 
 import { db } from "../../utils/firebaseConfig.js";
 import { avatar } from "../../index.js";
@@ -64,6 +65,7 @@ async function showAllComments(currentMemeId) {
 }
 
 async function showPostComments(current, currentMemeId) {
+  const currentID = current.id;
   const currentCom = current.data();
   const docSnap = await getDoc(doc(db, "users", currentCom.userID));
   const userName = docSnap.data().name;
@@ -109,35 +111,35 @@ async function showPostComments(current, currentMemeId) {
   unLikeCount.innerHTML = currentCom.unlikesCount;
   unLikeBtn.appendChild(unLikeCount);
 
-  /*  likeBtn.addEventListener("click", () =>
-  likeUnlikeFunc(
-    memeID,
-    "like",
-    likeBtn,
-    unLikeBtn,
-    likeCount,
-    unLikeCount,
-    cantLikeMessage
-  )
-);
-unLikeBtn.addEventListener("click", () =>
-  likeUnlikeFunc(
-    memeID,
-    "unlike",
-    likeBtn,
-    unLikeBtn,
-    likeCount,
-    unLikeCount,
-    cantLikeMessage
-  )
-);
+  likeBtn.addEventListener("click", () =>
+    likeUnlikeFunc(
+      "comments",
+      currentID,
+      "like",
+      likeBtn,
+      unLikeBtn,
+      likeCount,
+      unLikeCount
+    )
+  );
+  unLikeBtn.addEventListener("click", () =>
+    likeUnlikeFunc(
+      "comments",
+      currentID,
+      "unlike",
+      likeBtn,
+      unLikeBtn,
+      likeCount,
+      unLikeCount
+    )
+  );
 
-if (memeLikes.includes(currentUserId)) {
-  likeBtn.classList.add("activeLikeBtn");
-}
-if (memeUnlikes.includes(currentUserId)) {
-  unLikeBtn.classList.add("activeLikeBtn");
-} */
+  /*  if (memeLikes.includes(currentUserId)) {
+    likeBtn.classList.add("activeLikeBtn");
+  }
+  if (memeUnlikes.includes(currentUserId)) {
+    unLikeBtn.classList.add("activeLikeBtn");
+  } */
 
   if (userId === currentCom.userID) {
     const deleteButton = document.createElement("a");
@@ -145,7 +147,7 @@ if (memeUnlikes.includes(currentUserId)) {
     deleteButton.className = "deleteButton";
     commentButtons.appendChild(deleteButton);
 
-    commentButtons.addEventListener("click", () => {
+    deleteButton.addEventListener("click", () => {
       deleteComment(current.id, currentMemeId);
       addCommentCountToUser("add", currentCom.userID);
       addCommentCountToMeme("delete", currentMemeId);

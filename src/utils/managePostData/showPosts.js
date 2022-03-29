@@ -81,6 +81,7 @@ export function showSingleMeme(meme, divId) {
 
   likeBtn.addEventListener("click", () =>
     likeUnlikeFunc(
+      "home",
       memeID,
       "like",
       likeBtn,
@@ -92,6 +93,7 @@ export function showSingleMeme(meme, divId) {
   );
   unLikeBtn.addEventListener("click", () =>
     likeUnlikeFunc(
+      "home",
       memeID,
       "unlike",
       likeBtn,
