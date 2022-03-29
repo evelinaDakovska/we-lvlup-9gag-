@@ -29,6 +29,8 @@ async function signUpWithEmail() {
         const userID = userCredential.user.uid;
         await setDoc(doc(db, "users", userID), {
           name: fName,
+          like: 0,
+          comments: 0,
         });
         onSignIn();
         setTimeout(() => {

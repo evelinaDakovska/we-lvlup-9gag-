@@ -50,7 +50,7 @@ export async function uploadLogic() {
     likes: [],
     unlikesCount: 0,
     unlikes: [],
-    comments: {},
+    comments: 0,
     timestamp: serverTimestamp(),
   });
 

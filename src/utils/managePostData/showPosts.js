@@ -27,6 +27,7 @@ export function showSingleMeme(meme, divId) {
   const memeUnlikes = currentMeme.unlikes;
   const likesCount = currentMeme.likesCount;
   const unlikesCount = currentMeme.unlikesCount;
+  const commentsCount = currentMeme.comments;
   const memeID = meme.id;
 
   const currentUser = JSON.parse(localStorage.getItem("user"));
@@ -110,6 +111,10 @@ export function showSingleMeme(meme, divId) {
   const commentBtn = document.createElement("div");
   commentBtn.className = "commentsBtn sectionBtns";
   commentBtn.innerHTML = '<i class="fa-solid fa-message fa-lg"></i>';
+
+  const commentCount = document.createElement("div");
+  commentCount.innerHTML = commentsCount;
+  commentBtn.appendChild(commentCount);
 
   underMeme.appendChild(commentBtn);
 

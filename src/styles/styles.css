@@ -420,7 +420,8 @@ body {
   display: flex;
 }
 .commentButtons .sectionBtns,
-.commentButtons .replyButton {
+.commentButtons .replyButton,
+.commentButtons .deleteButton {
   margin-right: 10%;
   color: #999 !important;
   font-weight: bold;
@@ -428,7 +429,8 @@ body {
   cursor: pointer;
 }
 .commentButtons .sectionBtns:hover,
-.commentButtons .replyButton:hover {
+.commentButtons .replyButton:hover,
+.commentButtons .deleteButton:hover {
   color: #cecece !important;
 }
 

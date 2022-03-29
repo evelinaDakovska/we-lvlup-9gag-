@@ -414,7 +414,8 @@ body {
 .commentButtons {
   display: flex;
   .sectionBtns,
-  .replyButton {
+  .replyButton,
+  .deleteButton {
     margin-right: 10%;
     color: #999 !important;
     font-weight: bold;
