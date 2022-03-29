@@ -16,8 +16,11 @@ import { db } from "../../utils/firebaseConfig.js";
 import { avatar } from "../../index.js";
 import { showSingleMeme } from "../../utils/managePostData/showPosts.js";
 
-window.memeDetails = async (memeID) => {
-  const currentMemeId = memeID.id;
+window.memeDetails = async (data) => {
+  let memeInfo = data.id.split("+");
+  let memeID = memeInfo[0];
+  let memeOwnerID = memeInfo[1];
+  const currentMemeId = memeID;
   const docRef = doc(db, "home", currentMemeId);
   const docSnap = await getDoc(docRef);
   const user = JSON.parse(localStorage.getItem("user"));
@@ -42,6 +45,8 @@ window.memeDetails = async (memeID) => {
       postCommentFunction(currentComment, currentMemeId, userId);
       currentComment.value = "";
       showAllComments(currentMemeId);
+      addCommentCountToMeme("add", currentMemeId);
+      addCommentCountToUser("add", memeOwnerID);
     });
 };
 
@@ -142,6 +147,8 @@ if (memeUnlikes.includes(currentUserId)) {
 
     commentButtons.addEventListener("click", () => {
       deleteComment(current.id, currentMemeId);
+      addCommentCountToUser("add", currentCom.userID);
+      addCommentCountToMeme("delete", currentMemeId);
     });
   }
 
@@ -155,13 +162,6 @@ if (memeUnlikes.includes(currentUserId)) {
 async function deleteComment(id, currentMemeId) {
   await deleteDoc(doc(db, "comments", id));
   showAllComments(currentMemeId);
-  const memeRef = doc(db, "home", currentMemeId);
-  const getMeme = await getDoc(memeRef);
-  let memeDataComments = getMeme.data().comments;
-  memeDataComments--;
-  await updateDoc(memeRef, {
-    comments: memeDataComments,
-  });
 }
 
 async function postCommentFunction(currentComment, currentMemeId, userId) {
@@ -181,12 +181,32 @@ async function postCommentFunction(currentComment, currentMemeId, userId) {
     unlikesCount: 0,
   };
   await addDoc(collection(db, "comments"), docData);
+}
 
+async function addCommentCountToMeme(action, currentMemeId) {
   const memeRef = doc(db, "home", currentMemeId);
   const getMeme = await getDoc(memeRef);
   let memeDataComments = getMeme.data().comments;
-  memeDataComments++;
+  if (action === "delete") {
+    memeDataComments--;
+  } else {
+    memeDataComments++;
+  }
   await updateDoc(memeRef, {
     comments: memeDataComments,
+  });
+}
+
+async function addCommentCountToUser(action, userId) {
+  const userRef = doc(db, "users", userId);
+  const getUser = await getDoc(userRef);
+  let userDataComments = getUser.data().comments;
+  if (action === "delete") {
+    userDataComments--;
+  } else {
+    userDataComments++;
+  }
+  await updateDoc(userRef, {
+    comments: userDataComments,
   });
 }

@@ -72,10 +72,12 @@ export async function likeUnlikeFunc(
     currentTargetArr.splice(currentTargetArr.indexOf(currentUserId), 1);
     currentTargetCount--;
     currentButton.classList.remove("activeLikeBtn");
+    addLikeCountToUser("delete", memeCreator);
   } else {
     currentTargetArr.push(currentUserId);
     currentTargetCount++;
     currentButton.classList.add("activeLikeBtn");
+    addLikeCountToUser("like", memeCreator);
   }
   currentCountDiv.innerHTML = currentTargetCount;
 
@@ -101,4 +103,18 @@ export async function likeUnlikeFunc(
       unlikesCount: currentTargetCount,
     });
   }
+}
+
+async function addLikeCountToUser(action, userId) {
+  const userRef = doc(db, "users", userId);
+  const getUser = await getDoc(userRef);
+  let userDataLikes = getUser.data().like;
+  if (action === "delete") {
+    userDataLikes--;
+  } else {
+    userDataLikes++;
+  }
+  await updateDoc(userRef, {
+    like: userDataLikes,
+  });
 }

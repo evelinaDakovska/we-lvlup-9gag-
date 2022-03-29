@@ -29,6 +29,7 @@ export function showSingleMeme(meme, divId) {
   const unlikesCount = currentMeme.unlikesCount;
   const commentsCount = currentMeme.comments;
   const memeID = meme.id;
+  const memeOwnerID = currentMeme.userID;
 
   const currentUser = JSON.parse(localStorage.getItem("user"));
   const currentUserId = currentUser.uid;
@@ -52,7 +53,7 @@ export function showSingleMeme(meme, divId) {
   memeTitleElement.className = "memeTitle";
   memeTitleElement.innerText = memeTitle;
   if (currentUserId !== undefined) {
-    memeTitleElement.setAttribute("href", `/meme/${memeID}`);
+    memeTitleElement.setAttribute("href", `/meme/${memeID}+${memeOwnerID}`);
     memeTitleElement.setAttribute("data-navigo", "");
   }
   const singleMeme = document.createElement("div");
