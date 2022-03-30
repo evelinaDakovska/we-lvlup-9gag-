@@ -34,7 +34,7 @@ window.memeDetails = async (data) => {
   document.getElementById("userAvatar").appendChild(avatar);
   const currentComment = document.getElementById("currentComment");
 
-  showAllComments(currentMemeId);
+  showAllComments(currentMemeId, memeOwnerID);
 
   document.getElementById("cancelComemntBtn").addEventListener("click", () => {
     currentComment.value = "";
@@ -45,26 +45,27 @@ window.memeDetails = async (data) => {
     .addEventListener("click", async () => {
       postCommentFunction(currentComment, currentMemeId, userId);
       currentComment.value = "";
-      showAllComments(currentMemeId);
+      showAllComments(currentMemeId, memeOwnerID);
       addCommentCountToMeme("add", currentMemeId);
       addCommentCountToUser("add", memeOwnerID);
     });
 };
 
-async function showAllComments(currentMemeId) {
+async function showAllComments(currentMemeId, memeOwnerID) {
   document.getElementById("memeCommentsContainer").innerText = "";
   const q = query(
     collection(db, "comments"),
     orderBy("timestamp", "desc"),
-    where("postID", "==", currentMemeId)
+    where("postID", "==", currentMemeId),
+    where('parentCommentID', '==', 'none')
   );
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach(async (current) => {
-    showPostComments(current, currentMemeId);
+    showPostComments(current, currentMemeId, memeOwnerID);
   });
 }
 
-async function showPostComments(current, currentMemeId) {
+async function showPostComments(current, currentMemeId, memeOwnerID) {
   const currentID = current.id;
   const currentCom = current.data();
   const docSnap = await getDoc(doc(db, "users", currentCom.userID));
@@ -159,6 +160,16 @@ async function showPostComments(current, currentMemeId) {
   document
     .getElementById("memeCommentsContainer")
     .appendChild(currentCommentContainer);
+
+  replyButton.addEventListener("click", () => {
+    replyHTMLStructure(
+      currentCommentContainer,
+      currentMemeId,
+      userId,
+      currentID,
+      memeOwnerID
+    );
+  });
 }
 
 async function deleteComment(id, currentMemeId) {
@@ -166,11 +177,19 @@ async function deleteComment(id, currentMemeId) {
   showAllComments(currentMemeId);
 }
 
-async function postCommentFunction(currentComment, currentMemeId, userId) {
+async function postCommentFunction(
+  currentComment,
+  currentMemeId,
+  userId,
+  parentCommentID
+) {
   const commentValue = currentComment.value;
   if (!commentValue) {
     alert("You cant post empty comment");
     return;
+  }
+  if (!parentCommentID) {
+    parentCommentID = "none";
   }
   const docData = {
     comment: commentValue,
@@ -181,6 +200,7 @@ async function postCommentFunction(currentComment, currentMemeId, userId) {
     likesCount: 0,
     unlikes: [],
     unlikesCount: 0,
+    parentCommentID: parentCommentID,
   };
   await addDoc(collection(db, "comments"), docData);
 }
@@ -211,4 +231,62 @@ async function addCommentCountToUser(action, userId) {
   await updateDoc(userRef, {
     comments: userDataComments,
   });
+}
+
+function replyHTMLStructure(
+  currentCommentContainer,
+  currentMemeId,
+  userId,
+  parentCommentID,
+  memeOwnerID
+) {
+  const replyCommentSection = document.createElement("div");
+  replyCommentSection.className = "replyCommentSection";
+
+  const userAvatar = document.createElement("div");
+  userAvatar.className = "userAvatar";
+  userAvatar.appendChild(avatar);
+  replyCommentSection.appendChild(userAvatar);
+
+  const textAreaSection = document.createElement("section");
+  textAreaSection.className = "textAreaSection";
+
+  const currentReplyComment = document.createElement("textarea");
+  currentReplyComment.className = "currentReplyComment";
+  currentReplyComment.setAttribute("rows", "1");
+  currentReplyComment.setAttribute("placeholder", "Write a reply comment...");
+  textAreaSection.appendChild(currentReplyComment);
+
+  const replyBtnSection = document.createElement("footer");
+
+  const cancelReplyBtn = document.createElement("button");
+  cancelReplyBtn.className = "cancelReplyBtn";
+  cancelReplyBtn.innerText = "Cancel";
+  replyBtnSection.appendChild(cancelReplyBtn);
+
+  cancelReplyBtn.addEventListener("click", () => {
+    currentReplyComment.value = "";
+  });
+
+  const postReplyBtn = document.createElement("button");
+  postReplyBtn.className = "postReplyBtn";
+  postReplyBtn.innerText = "Post";
+  replyBtnSection.appendChild(postReplyBtn);
+
+  postReplyBtn.addEventListener("click", async () => {
+    postCommentFunction(
+      currentReplyComment,
+      currentMemeId,
+      userId,
+      parentCommentID
+    );
+    currentReplyComment.value = "";
+    addCommentCountToMeme("add", currentMemeId);
+    addCommentCountToUser("add", memeOwnerID);
+  });
+
+  textAreaSection.appendChild(replyBtnSection);
+  replyCommentSection.appendChild(textAreaSection);
+
+  currentCommentContainer.appendChild(replyCommentSection);
 }
