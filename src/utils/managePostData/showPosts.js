@@ -18,9 +18,11 @@ export async function showPosts(orderedDB, divId) {
   router.updatePageLinks();
 
   window.addEventListener("scroll", () => {
-    setTimeout(() => {
-      loadMoreList();
-    }, 50);
+    if (window.location.href !== "http://127.0.0.1:5503/meme") {
+      setTimeout(() => {
+        loadMoreList();
+      }, 50);
+    }
   });
 
   function loadMoreList() {

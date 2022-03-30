@@ -14,6 +14,7 @@ import {
   collection,
 } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js";
 import { storage, db } from "../firebaseConfig.js";
+import { router } from "../navigoRouter.js";
 
 export async function uploadLogic() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -68,7 +69,7 @@ export async function uploadLogic() {
     );
     uploadedSuccessfully.classList.add("hidden");
   }, 2000);
-  window.location.href = "/";
+  router.navigate("/profile");
 }
 
 export function useIputClick() {

@@ -3,6 +3,7 @@
 /* eslint-disable import/no-unresolved */
 import { signOut } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js";
 import { auth } from "../../index.js";
+import { router } from "../navigoRouter.js";
 
 export default function signOutFunc() {
   signOut(auth)
@@ -13,7 +14,7 @@ export default function signOutFunc() {
 
       $("#loginButton").removeClass("hidden");
       $("#regButton").removeClass("hidden");
-      window.location.href = "/";
+      router.navigate("/");
     })
     .catch((error) => {
       console.log(error.message);

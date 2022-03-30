@@ -7,6 +7,7 @@ import {
   getDoc,
 } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js";
 import { db } from "./utils/firebaseConfig.js";
+import { router } from "./utils/navigoRouter.js";
 
 if (!localStorage.getItem("user")) {
   localStorage.setItem("user", "{}");
@@ -22,7 +23,7 @@ export function onSignIn() {
   $("#registerModal").modal("hide");
   $("#loginModal").modal("hide");
   userButtons();
-  window.location.href = "/";
+  router.navigate("/");
 }
 
 function userButtons() {
