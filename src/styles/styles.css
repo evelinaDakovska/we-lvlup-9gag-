@@ -268,7 +268,6 @@ body {
 }
 
 .meme {
-  margin-bottom: 5%;
   max-width: 70%;
 }
 .meme .imgContainer {
@@ -277,7 +276,7 @@ body {
   display: flex;
   justify-content: center;
 }
-.meme .imgContainer content img {
+.meme .imgContainer img {
   width: 80%;
 }
 .meme .memeTitle {
@@ -518,6 +517,13 @@ body {
 }
 #profileAvatar div {
   font-size: xx-large;
+}
+
+#deleteBtn {
+  background-color: #07f;
+  color: white;
+  width: 100px;
+  margin: 0% 25% 2% 25%;
 }
 
 /*# sourceMappingURL=styles.css.map */

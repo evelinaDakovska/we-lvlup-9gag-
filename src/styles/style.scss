@@ -262,7 +262,7 @@ body {
     margin-top: 1%;
     background-color: #f4f4f4;
     display: flex;
-    justify-content: center;content
+    justify-content: center;
     img {
       width: 80%;
     }
@@ -273,7 +273,6 @@ body {
     text-decoration: none;
     font-weight: bold;
   }
-  margin-bottom: 5%;
   max-width: 70%;
 }
 
@@ -511,4 +510,11 @@ body {
   div {
     font-size: xx-large;
   }
+}
+
+#deleteBtn {
+  background-color: #07f;
+  color: white;
+  width: 100px;
+  margin: 0% 25% 2% 25%;
 }

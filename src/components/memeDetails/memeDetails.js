@@ -16,6 +16,7 @@ import { likeUnlikeFunc } from "../../utils/managePostData/likeUnlikeFunc.js";
 import { db } from "../../utils/firebaseConfig.js";
 import { createAvatar } from "../../index.js";
 import { showSingleMeme } from "../../utils/managePostData/showPosts.js";
+import { router } from "../../utils/navigoRouter.js";
 
 window.memeDetails = async (data) => {
   let memeInfo = data.id.split("+");
@@ -49,7 +50,19 @@ window.memeDetails = async (data) => {
       addCommentCountToMeme("add", currentMemeId);
       addCommentCountToUser("add", memeOwnerID);
     });
+
+  if (memeOwnerID === userId) {
+    $("#deleteBtn").removeClass("hidden");
+    $("#deleteBtn").click(() => deleteMemeFunc(memeID));
+  }
 };
+
+async function deleteMemeFunc(memeID) {
+  if (confirm("Are you sure you want to delete this post?")) {
+    await deleteDoc(doc(db, "home", memeID));
+    router.navigate("/profile");
+  }
+}
 
 async function showAllComments(currentMemeId, memeOwnerID) {
   document.getElementById("memeCommentsContainer").innerText = "";
