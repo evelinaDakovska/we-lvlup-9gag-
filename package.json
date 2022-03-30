@@ -20,7 +20,8 @@
     "prettier": "2.5.1"
   },
   "dependencies": {
-    "@ls-lint/ls-lint": "^1.11.0"
+    "@ls-lint/ls-lint": "^1.11.0",
+    "sass": "^1.49.9"
   },
   "husky": {
     "hooks": {
