@@ -51,18 +51,7 @@ window.memeDetails = async (data) => {
       addCommentCountToUser("add", memeOwnerID);
     });
 
-  if (memeOwnerID === userId) {
-    $("#deleteBtn").removeClass("hidden");
-    $("#deleteBtn").click(() => deleteMemeFunc(memeID));
-  }
 };
-
-async function deleteMemeFunc(memeID) {
-  if (confirm("Are you sure you want to delete this post?")) {
-    await deleteDoc(doc(db, "home", memeID));
-    router.navigate("/profile");
-  }
-}
 
 async function showAllComments(currentMemeId, memeOwnerID) {
   document.getElementById("memeCommentsContainer").innerText = "";
@@ -155,18 +144,6 @@ async function showPostComments(current, currentMemeId, memeOwnerID) {
     unLikeBtn.classList.add("activeLikeBtn");
   } */
 
-  if (userId === currentCom.userID) {
-    const deleteButton = document.createElement("a");
-    deleteButton.innerText = "Delete";
-    deleteButton.className = "deleteButton";
-    commentButtons.appendChild(deleteButton);
-
-    deleteButton.addEventListener("click", () => {
-      deleteComment(current.id, currentMemeId);
-      addCommentCountToUser("add", currentCom.userID);
-      addCommentCountToMeme("delete", currentMemeId);
-    });
-  }
 
   currentCommentContainer.appendChild(commentButtons);
 
