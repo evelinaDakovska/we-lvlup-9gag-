@@ -328,10 +328,6 @@ body {
   margin-bottom: 3%;
 }
 
-.commentsBtn {
-  cursor: default;
-}
-
 #profileButton {
   border-radius: 50%;
   background-color: #07f;
