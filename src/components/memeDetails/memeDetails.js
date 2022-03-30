@@ -57,7 +57,7 @@ async function showAllComments(currentMemeId, memeOwnerID) {
     collection(db, "comments"),
     orderBy("timestamp", "desc"),
     where("postID", "==", currentMemeId),
-    where('parentCommentID', '==', 'none')
+    where("parentCommentID", "==", "none")
   );
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach(async (current) => {
@@ -167,7 +167,8 @@ async function showPostComments(current, currentMemeId, memeOwnerID) {
       currentMemeId,
       userId,
       currentID,
-      memeOwnerID
+      memeOwnerID,
+      userName
     );
   });
 }
@@ -238,14 +239,15 @@ function replyHTMLStructure(
   currentMemeId,
   userId,
   parentCommentID,
-  memeOwnerID
+  memeOwnerID,
+  userName
 ) {
   const replyCommentSection = document.createElement("div");
   replyCommentSection.className = "replyCommentSection";
 
   const userAvatar = document.createElement("div");
   userAvatar.className = "userAvatar";
-  userAvatar.appendChild(avatar);
+  userAvatar.innerText = userName;
   replyCommentSection.appendChild(userAvatar);
 
   const textAreaSection = document.createElement("section");
@@ -258,8 +260,9 @@ function replyHTMLStructure(
   textAreaSection.appendChild(currentReplyComment);
 
   const replyBtnSection = document.createElement("footer");
+  replyBtnSection.className = "replyBtnSection";
 
-  const cancelReplyBtn = document.createElement("button");
+  const cancelReplyBtn = document.createElement("a");
   cancelReplyBtn.className = "cancelReplyBtn";
   cancelReplyBtn.innerText = "Cancel";
   replyBtnSection.appendChild(cancelReplyBtn);
@@ -268,7 +271,7 @@ function replyHTMLStructure(
     currentReplyComment.value = "";
   });
 
-  const postReplyBtn = document.createElement("button");
+  const postReplyBtn = document.createElement("a");
   postReplyBtn.className = "postReplyBtn";
   postReplyBtn.innerText = "Post";
   replyBtnSection.appendChild(postReplyBtn);
