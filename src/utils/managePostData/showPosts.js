@@ -118,6 +118,10 @@ export function showSingleMeme(meme, divId) {
   const commentCount = document.createElement("div");
   commentCount.innerHTML = commentsCount;
   commentBtn.appendChild(commentCount);
+  if (currentUserId !== undefined) {
+    commentBtn.setAttribute("href", `/meme/${memeID}+${memeOwnerID}`);
+    commentBtn.setAttribute("data-navigo", "");
+  }
 
   underMeme.appendChild(commentBtn);
 
