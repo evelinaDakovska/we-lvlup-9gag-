@@ -259,9 +259,10 @@ body {
 
 .meme {
   .imgContainer {
+    margin-top: 1%;
     background-color: #f4f4f4;
     display: flex;
-    justify-content: center;
+    justify-content: center;content
     img {
       width: 80%;
     }
@@ -270,6 +271,7 @@ body {
     font-size: 20px;
     color: #000;
     text-decoration: none;
+    font-weight: bold;
   }
   margin-bottom: 5%;
   max-width: 70%;
@@ -433,6 +435,8 @@ body {
 
 #profileInfo {
   margin-bottom: 3%;
+  display: flex;
+  align-items: center;
 }
 
 .currentReplyComment {
@@ -489,4 +493,22 @@ body {
   padding: 0 10px;
   width: 55px;
   margin-bottom: 1%;
+}
+
+#profileAvatar {
+  color: white;
+  text-decoration: none;
+  line-height: 80px;
+  width: 80px;
+  font-weight: 700;
+  padding: 0 8px;
+  border-radius: 50%;
+  background-color: #07f;
+  height: 80%;
+  margin-right: 3%;
+  display: flex;
+  justify-content: center;
+  div {
+    font-size: xx-large;
+  }
 }
