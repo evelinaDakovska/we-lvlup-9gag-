@@ -32,18 +32,21 @@ function userButtons() {
   $("#userBtns").removeClass("hidden");
 }
 
-export const avatar = document.createElement("div");
-avatar.setAttribute("id", "avatar");
+export async function createAvatar() {
+  const avatar = document.createElement("div");
 
-if (localStorage.getItem("user") !== "{}") {
-  const user = JSON.parse(localStorage.getItem("user"));
-  const userId = user.uid;
-  const docRef = doc(db, "users", userId);
-  const docSnap = await getDoc(docRef);
-  const userName = docSnap.data().name.split(" ");
-  const firstLetter = userName[0][0];
-  const lastLetter = userName[1][0];
+  if (localStorage.getItem("user") !== "{}") {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const userId = user.uid;
+    const docRef = doc(db, "users", userId);
+    const docSnap = await getDoc(docRef);
+    const userName = docSnap.data().name.split(" ");
+    const firstLetter = userName[0][0];
+    const lastLetter = userName[1][0];
 
-  avatar.innerText = `${firstLetter}${lastLetter}`;
-  document.getElementById("profileButton").appendChild(avatar);
+    avatar.innerText = `${firstLetter}${lastLetter}`;
+  }
+  return avatar;
 }
+/* const ava = await createAvatar(); */
+document.getElementById("profileButton").appendChild(await createAvatar());

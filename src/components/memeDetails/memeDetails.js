@@ -14,7 +14,7 @@ import {
 import { likeUnlikeFunc } from "../../utils/managePostData/likeUnlikeFunc.js";
 
 import { db } from "../../utils/firebaseConfig.js";
-import { avatar } from "../../index.js";
+import { createAvatar } from "../../index.js";
 import { showSingleMeme } from "../../utils/managePostData/showPosts.js";
 
 window.memeDetails = async (data) => {
@@ -31,7 +31,7 @@ window.memeDetails = async (data) => {
   document
     .getElementsByClassName("memeTitle")[0]
     .setAttribute("style", "pointer-events: none;");
-  document.getElementById("userAvatar").appendChild(avatar);
+  document.getElementById("userAvatar").appendChild(await createAvatar());
   const currentComment = document.getElementById("currentComment");
 
   showAllComments(currentMemeId, memeOwnerID);

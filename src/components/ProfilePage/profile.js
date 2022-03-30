@@ -9,6 +9,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js";
 import { db } from "../../utils/firebaseConfig.js";
 import { showPosts } from "../../utils/managePostData/showPosts.js";
+import { createAvatar } from "../../index.js";
 
 window.profile = async () => {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -16,6 +17,8 @@ window.profile = async () => {
   const userRef = doc(db, "users", user.uid);
   const userSnap = await getDoc(userRef);
   const userData = userSnap.data();
+
+  document.getElementById("profileAvatar").appendChild(await createAvatar());
 
   document.getElementById("userNameTitle").innerText = userData.name;
   document.getElementById(
