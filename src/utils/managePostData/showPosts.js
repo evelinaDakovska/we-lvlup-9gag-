@@ -13,10 +13,36 @@ import { router } from "../navigoRouter.js";
 
 export async function showPosts(orderedDB, divId) {
   const querySnapshot = await getDocs(orderedDB);
-  querySnapshot.forEach((doc) => {
-    showSingleMeme(doc, divId);
-  });
+  const array = querySnapshot.docs;
+  showLimitedMemes(array, divId);
   router.updatePageLinks();
+
+  window.addEventListener("scroll", () => {
+    setTimeout(() => {
+      loadMoreList();
+    }, 50);
+  });
+
+  function loadMoreList() {
+    const scrollY = window.scrollY;
+    const innerHeight = window.innerHeight;
+    const offsetHeight = document.body.offsetHeight;
+
+    if (scrollY + innerHeight > offsetHeight - 100) {
+      showLimitedMemes();
+      router.updatePageLinks();
+    }
+  }
+
+  function showLimitedMemes() {
+    for (let i = 0; i < 3; i++) {
+      if (array[i] === undefined) {
+        break;
+      }
+      showSingleMeme(array[i], divId);
+    }
+    array.splice(0, 3);
+  }
 }
 
 export function showSingleMeme(meme, divId) {
