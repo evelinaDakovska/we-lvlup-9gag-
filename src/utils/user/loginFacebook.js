@@ -33,13 +33,15 @@ function facebookLogin() {
       if (!docSnap.exists()) {
         await setDoc(userRef, {
           name: fName,
+          like: 0,
+          comments: 0,
         });
       }
 
       onSignIn();
     })
     .catch((error) => {
-      console.log(error);
+      alert(error.code);
     });
 }
 

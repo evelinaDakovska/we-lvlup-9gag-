@@ -28,7 +28,7 @@ function signInWithEmailFunction() {
       onSignIn();
     })
     .catch((error) => {
-      console.error(error);
+      alert(error.code);
     });
 }
 

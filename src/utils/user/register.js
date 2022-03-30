@@ -39,7 +39,7 @@ async function signUpWithEmail() {
         }, 2000);
       })
       .catch((error) => {
-        console.log(error);
+       alert(error.code);
       });
   };
 

@@ -16,7 +16,7 @@ export default function signOutFunc() {
       window.location.href = "/";
     })
     .catch((error) => {
-      console.log(error);
+      console.log(error.message);
     });
 }
 
