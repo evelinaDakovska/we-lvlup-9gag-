@@ -19,7 +19,6 @@ import { router } from "../navigoRouter.js";
 export async function uploadLogic() {
   const user = JSON.parse(localStorage.getItem("user"));
   const userID = user.uid;
-  const userEmail = user.email;
   const file = document.getElementById("fakehiddenInput").files[0];
   const title = $("#titleInput").val();
 
@@ -27,15 +26,13 @@ export async function uploadLogic() {
     alert("Please add title/file!");
     return;
   }
-
-  const metadata = { contentType: file.type };
   let fileURL;
 
   const storageRef = ref(storage, title);
 
   const uploadTask = uploadBytesResumable(storageRef, file);
 
-  await uploadBytes(storageRef, file).then((snapshot) => {});
+  await uploadBytes(storageRef, file);
 
   await getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
     fileURL = downloadURL;

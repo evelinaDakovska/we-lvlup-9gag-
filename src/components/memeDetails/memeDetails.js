@@ -50,7 +50,6 @@ window.memeDetails = async (data) => {
       addCommentCountToMeme("add", currentMemeId);
       addCommentCountToUser("add", memeOwnerID);
     });
-
 };
 
 async function showAllComments(currentMemeId, memeOwnerID) {
@@ -114,6 +113,16 @@ async function showPostComments(current, currentMemeId, memeOwnerID) {
   unLikeCount.innerHTML = currentCom.unlikesCount;
   unLikeBtn.appendChild(unLikeCount);
 
+  if (userId === currentCom.userID) {
+    const deleteButton = document.createElement("a");
+    deleteButton.innerText = "Delete";
+    deleteButton.className = "deleteButton";
+    commentButtons.appendChild(deleteButton);
+    deleteButton.addEventListener("click", () => {
+      deleteComment(currentID, currentMemeId);
+    });
+  }
+
   likeBtn.addEventListener("click", () =>
     likeUnlikeFunc(
       "comments",
@@ -144,7 +153,6 @@ async function showPostComments(current, currentMemeId, memeOwnerID) {
     unLikeBtn.classList.add("activeLikeBtn");
   } */
 
-
   currentCommentContainer.appendChild(commentButtons);
 
   document
@@ -165,6 +173,8 @@ async function showPostComments(current, currentMemeId, memeOwnerID) {
 
 async function deleteComment(id, currentMemeId) {
   await deleteDoc(doc(db, "comments", id));
+  addCommentCountToMeme("delete", currentMemeId);
+  addCommentCountToUser("delete", currentMemeId);
   showAllComments(currentMemeId);
 }
 

@@ -14,29 +14,33 @@ import { router } from "../navigoRouter.js";
 export async function showPosts(orderedDB, divId) {
   const querySnapshot = await getDocs(orderedDB);
   const array = querySnapshot.docs;
+  let divID = divId;
   showLimitedMemes(array, divId);
   router.updatePageLinks();
 
-  window.addEventListener("scroll", () => {
-    if (window.location.href !== "http://127.0.0.1:5503/meme") {
+  $(window).off("scroll");
+  $(window).on("scroll", infiniteScroll);
+
+  function infiniteScroll() {
+    if (window.location.pathname !== "/meme") {
       setTimeout(() => {
-        loadMoreList();
+        loadMoreList(array, divID);
       }, 50);
     }
-  });
+  }
 
-  function loadMoreList() {
+  function loadMoreList(array, divId) {
     const scrollY = window.scrollY;
     const innerHeight = window.innerHeight;
     const offsetHeight = document.body.offsetHeight;
 
     if (scrollY + innerHeight > offsetHeight - 100) {
-      showLimitedMemes();
+      showLimitedMemes(array, divId);
       router.updatePageLinks();
     }
   }
 
-  function showLimitedMemes() {
+  function showLimitedMemes(array, divId) {
     for (let i = 0; i < 3; i++) {
       if (array[i] === undefined) {
         break;
@@ -64,6 +68,10 @@ export function showSingleMeme(meme, divId) {
 
   const allMemesDiv = document.getElementById(divId);
 
+  if (allMemesDiv === null) {
+    debugger;
+  }
+
   const memeImg = document.createElement("img");
 
   getDownloadURL(ref(storage, memeURL))
@@ -73,6 +81,7 @@ export function showSingleMeme(meme, divId) {
     .catch((error) => {
       console.log(error);
     });
+
   const imgContainer = document.createElement("div");
   imgContainer.className = "imgContainer";
   imgContainer.appendChild(memeImg);
