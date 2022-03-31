@@ -15,6 +15,10 @@ window.fresh = async () => {
   let docRef = query(memesRef, orderBy("timestamp", "desc"));
   showPosts(docRef, "freshPage");
 
+  if (localStorage.getItem("user") !== "{}") {
+    $("#showOnlyOwnPostsFresh").removeClass("hidden");
+  }
+
   $("#showOnlyOwnPostsFresh").click(() => {
     document.getElementById("freshPage").innerText = "";
     if ($("#showOnlyOwnPostsFresh").text() === "Show my posts") {

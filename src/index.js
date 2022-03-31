@@ -23,7 +23,7 @@ export function onSignIn() {
   $("#registerModal").modal("hide");
   $("#loginModal").modal("hide");
   userButtons();
-  router.navigate("/");
+  router.navigate("/profile");
 }
 
 async function userButtons() {

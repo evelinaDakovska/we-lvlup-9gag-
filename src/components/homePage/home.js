@@ -15,6 +15,10 @@ window.go = async () => {
   let docRef = query(memesRef, orderBy("likesCount", "desc"));
   showPosts(docRef, "allMemes");
 
+  if (localStorage.getItem("user") !== "{}") {
+    $("#showOnlyOwnPosts").removeClass("hidden");
+  }
+
   $("#showOnlyOwnPosts").click(() => {
     document.getElementById("allMemes").innerText = "";
     if ($("#showOnlyOwnPosts").text() === "Show my posts") {

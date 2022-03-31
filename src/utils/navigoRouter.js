@@ -26,6 +26,7 @@ const routes = {
 };
 
 async function reuseFuncOnRoute(route, pathKey, memeID) {
+  content.innerHTML = "";
   const html = await fetch(route.path).then((data) => data.text());
   content.innerHTML = html;
   const script = document.createElement("script");
