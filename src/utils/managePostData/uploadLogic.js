@@ -35,9 +35,7 @@ export async function uploadLogic() {
 
   const uploadTask = uploadBytesResumable(storageRef, file);
 
-  await uploadBytes(storageRef, file).then((snapshot) => {
-    console.log(snapshot);
-  });
+  await uploadBytes(storageRef, file).then((snapshot) => {});
 
   await getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
     fileURL = downloadURL;

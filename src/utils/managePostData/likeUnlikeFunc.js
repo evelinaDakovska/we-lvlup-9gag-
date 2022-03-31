@@ -31,6 +31,10 @@ export async function likeUnlikeFunc(
       cantLikeMessage.style.backgroundColor = "#07f";
       cantLikeMessage.style.color = "white";
       cantLikeMessage.innerText = "Dude! It's not cool to like your own posts!";
+      setTimeout(() => {
+        cantLikeMessage.innerText = "";
+      }, 2000);
+
       return;
     }
 
@@ -38,6 +42,9 @@ export async function likeUnlikeFunc(
       cantLikeMessage.style.backgroundColor = "#07f";
       cantLikeMessage.style.color = "white";
       cantLikeMessage.innerText = "You must be logged in to like posts!";
+      setTimeout(() => {
+        cantLikeMessage.innerText = "";
+      }, 2000);
       return;
     }
   }

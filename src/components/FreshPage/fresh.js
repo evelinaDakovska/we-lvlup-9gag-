@@ -16,12 +16,19 @@ window.fresh = async () => {
   showPosts(docRef, "freshPage");
 
   $("#showOnlyOwnPostsFresh").click(() => {
-    docRef = query(
-      memesRef,
-      orderBy("timestamp", "desc"),
-      where("userID", "==", user.uid)
-    );
     document.getElementById("freshPage").innerText = "";
-    showPosts(docRef, "freshPage");
+    if ($("#showOnlyOwnPostsFresh").text() === "Show my posts") {
+      docRef = query(
+        memesRef,
+        orderBy("timestamp", "desc"),
+        where("userID", "==", user.uid)
+      );
+      showPosts(docRef, "freshPage");
+      $("#showOnlyOwnPostsFresh").text("Show all");
+    } else {
+      docRef = query(memesRef, orderBy("timestamp", "desc"));
+      showPosts(docRef, "freshPage");
+      $("#showOnlyOwnPostsFresh").text("Show my posts");
+    }
   });
 };

@@ -12,6 +12,8 @@ body {
   display: flex;
   justify-content: center;
   border-bottom: 2px solid #f2f2f2;
+  background-color: white;
+  align-items: center;
 }
 
 .navigation {
@@ -135,6 +137,24 @@ body {
 }
 #regButton:hover,
 #uploadPageButton:hover {
+  background-color: #005fcc;
+}
+#regButton #uploadSpan,
+#uploadPageButton #uploadSpan {
+  color: white;
+}
+
+#showOnlyOwnPosts,
+#showOnlyOwnPostsFresh {
+  color: white;
+  line-height: 36px;
+  padding: 0 16px;
+  background-color: #07f;
+  border-radius: 18px;
+  margin-left: 30%;
+}
+#showOnlyOwnPosts:hover,
+#showOnlyOwnPostsFresh:hover {
   background-color: #005fcc;
 }
 
@@ -517,6 +537,79 @@ body {
 }
 #profileAvatar div {
   font-size: xx-large;
+}
+
+@media (max-width: 1330px) {
+  .topic5 {
+    display: none;
+  }
+
+  .meme {
+    max-width: none;
+  }
+}
+@media (max-width: 1200px) {
+  .topic4 {
+    display: none;
+  }
+
+  .content {
+    margin-top: 8%;
+  }
+}
+@media (max-width: 1040px) {
+  .topic3 {
+    display: none;
+  }
+}
+@media (max-width: 920px) {
+  .topic2,
+.left-menu,
+#uploadSpan,
+#signOutSpan {
+    display: none;
+  }
+
+  #main-content {
+    width: 100%;
+  }
+
+  #signOutIconSpan {
+    display: block !important;
+  }
+
+  .content {
+    margin-top: 10%;
+  }
+}
+@media (max-width: 760px) {
+  .topic-buttons,
+.search-button {
+    display: none;
+  }
+
+  .content {
+    margin-top: 12%;
+  }
+
+  #freshNavBtn {
+    display: contents !important;
+  }
+}
+@media (max-width: 580px) {
+  .content {
+    margin-top: 14%;
+  }
+}
+@media (max-width: 460px) {
+  .content {
+    margin-top: 17%;
+  }
+}
+@media (max-width: 380px) {
+  .content {
+    margin-top: 20%;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

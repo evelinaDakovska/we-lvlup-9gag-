@@ -16,12 +16,19 @@ window.go = async () => {
   showPosts(docRef, "allMemes");
 
   $("#showOnlyOwnPosts").click(() => {
-    docRef = query(
-      memesRef,
-      orderBy("likesCount", "desc"),
-      where("userID", "==", user.uid)
-    );
     document.getElementById("allMemes").innerText = "";
-    showPosts(docRef, "allMemes");
+    if ($("#showOnlyOwnPosts").text() === "Show my posts") {
+      docRef = query(
+        memesRef,
+        orderBy("likesCount", "desc"),
+        where("userID", "==", user.uid)
+      );
+      showPosts(docRef, "allMemes");
+      $("#showOnlyOwnPosts").text("Show all");
+    } else {
+      docRef = query(memesRef, orderBy("likesCount", "desc"));
+      showPosts(docRef, "allMemes");
+      $("#showOnlyOwnPosts").text("Show my posts");
+    }
   });
 };

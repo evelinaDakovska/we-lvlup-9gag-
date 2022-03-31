@@ -26,11 +26,14 @@ export function onSignIn() {
   router.navigate("/");
 }
 
-function userButtons() {
+async function userButtons() {
   $("#loginButton").addClass("hidden");
   $("#regButton").addClass("hidden");
 
   $("#userBtns").removeClass("hidden");
+
+  document.getElementById("profileButton").innerHTML = "";
+  document.getElementById("profileButton").appendChild(await createAvatar());
 }
 
 export async function createAvatar() {
@@ -49,5 +52,3 @@ export async function createAvatar() {
   }
   return avatar;
 }
-/* const ava = await createAvatar(); */
-document.getElementById("profileButton").appendChild(await createAvatar());
