@@ -20,7 +20,7 @@ window.fresh = async () => {
   }
 
   $("#showOnlyOwnPostsFresh").click(() => {
-    document.getElementById("freshPage").innerText = "";
+    $("#freshPage").html("");
     if ($("#showOnlyOwnPostsFresh").text() === "Show my posts") {
       docRef = query(
         memesRef,

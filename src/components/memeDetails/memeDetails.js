@@ -32,28 +32,26 @@ window.memeDetails = async (data) => {
   document
     .getElementsByClassName("memeTitle")[0]
     .setAttribute("style", "pointer-events: none;");
-  document.getElementById("userAvatar").appendChild(await createAvatar());
+  $("#userAvatar").append(await createAvatar());
   const currentComment = document.getElementById("currentComment");
 
   showAllComments(currentMemeId, memeOwnerID);
 
-  document.getElementById("cancelComemntBtn").addEventListener("click", () => {
+  $("#cancelComemntBtn").click(() => {
     currentComment.value = "";
   });
 
-  document
-    .getElementById("postCommentBtn")
-    .addEventListener("click", async () => {
-      postCommentFunction(currentComment, currentMemeId, userId);
-      currentComment.value = "";
-      showAllComments(currentMemeId, memeOwnerID);
-      addCommentCountToMeme("add", currentMemeId);
-      addCommentCountToUser("add", memeOwnerID);
-    });
+  $("#postCommentBtn").click(async () => {
+    postCommentFunction(currentComment, currentMemeId, userId);
+    currentComment.value = "";
+    showAllComments(currentMemeId, memeOwnerID);
+    addCommentCountToMeme("add", currentMemeId);
+    addCommentCountToUser("add", memeOwnerID);
+  });
 };
 
 async function showAllComments(currentMemeId, memeOwnerID) {
-  document.getElementById("memeCommentsContainer").innerText = "";
+  $("#memeCommentsContainer").html("");
   const q = query(
     collection(db, "comments"),
     orderBy("timestamp", "desc"),
@@ -75,55 +73,55 @@ async function showPostComments(current, currentMemeId, memeOwnerID) {
   const userId = user.uid;
 
   const currentCommentContainer = document.createElement("div");
-  currentCommentContainer.className = "currentCommentContainer";
+  $(currentCommentContainer).addClass("currentCommentContainer");
 
   const userNameContainer = document.createElement("span");
-  userNameContainer.className = "userNameContainer";
-  userNameContainer.innerText = userName;
-  currentCommentContainer.appendChild(userNameContainer);
+  $(userNameContainer).addClass("userNameContainer");
+  $(userNameContainer).text(userName);
+  $(currentCommentContainer).append(userNameContainer);
 
   const commentValue = document.createElement("div");
-  commentValue.className = "commentValue";
-  commentValue.innerText = currentCom.comment;
-  currentCommentContainer.appendChild(commentValue);
+  $(commentValue).addClass("commentValue");
+  $(commentValue).text(currentCom.comment);
+  $(currentCommentContainer).append(commentValue);
 
   const commentButtons = document.createElement("div");
-  commentButtons.className = "commentButtons";
+  $(commentButtons).addClass("commentButtons");
 
   const replyButton = document.createElement("a");
-  replyButton.innerText = "Reply";
-  replyButton.className = "replyButton";
-  commentButtons.appendChild(replyButton);
+  $(replyButton).text("Reply");
+  $(replyButton).addClass("replyButton");
+  $(commentButtons).append(replyButton);
 
   const likeBtn = document.createElement("div");
-  likeBtn.className = "upVoteBtn sectionBtns";
-  likeBtn.innerHTML = `<i class="fa-solid fa-arrow-up fa-lg"></i>`;
-  commentButtons.appendChild(likeBtn);
+  $(likeBtn).addClass("upVoteBtn sectionBtns");
+  $(likeBtn).html(`<i class="fa-solid fa-arrow-up fa-lg"></i>`);
+  $(commentButtons).append(likeBtn);
 
   const unLikeBtn = document.createElement("div");
-  unLikeBtn.className = "downVoteBtn sectionBtns";
-  unLikeBtn.innerHTML = `<i class="fa-solid fa-arrow-down fa-lg"></i>`;
-  commentButtons.appendChild(unLikeBtn);
+  $(unLikeBtn).addClass("downVoteBtn sectionBtns");
+  $(unLikeBtn).html(`<i class="fa-solid fa-arrow-down fa-lg"></i>`);
+  $(commentButtons).append(unLikeBtn);
 
   const likeCount = document.createElement("div");
-  likeCount.innerHTML = currentCom.likesCount;
-  likeBtn.appendChild(likeCount);
+  $(likeCount).text(currentCom.likesCount);
+  $(likeBtn).append(likeCount);
 
   const unLikeCount = document.createElement("div");
-  unLikeCount.innerHTML = currentCom.unlikesCount;
-  unLikeBtn.appendChild(unLikeCount);
+  $(unLikeCount).text(currentCom.unlikesCount);
+  $(unLikeBtn).append(unLikeCount);
 
   if (userId === currentCom.userID) {
     const deleteButton = document.createElement("a");
-    deleteButton.innerText = "Delete";
-    deleteButton.className = "deleteButton";
-    commentButtons.appendChild(deleteButton);
-    deleteButton.addEventListener("click", () => {
+    $(deleteButton).text("Delete");
+    $(deleteButton).addClass("deleteButton");
+    $(commentButtons).append(deleteButton);
+    $(deleteButton).click(() => {
       deleteComment(currentID, currentMemeId);
     });
   }
 
-  likeBtn.addEventListener("click", () =>
+  $(likeBtn).click(() =>
     likeUnlikeFunc(
       "comments",
       currentID,
@@ -134,7 +132,7 @@ async function showPostComments(current, currentMemeId, memeOwnerID) {
       unLikeCount
     )
   );
-  unLikeBtn.addEventListener("click", () =>
+  $(unLikeBtn).click(() =>
     likeUnlikeFunc(
       "comments",
       currentID,
@@ -146,20 +144,11 @@ async function showPostComments(current, currentMemeId, memeOwnerID) {
     )
   );
 
-  /*  if (memeLikes.includes(currentUserId)) {
-    likeBtn.classList.add("activeLikeBtn");
-  }
-  if (memeUnlikes.includes(currentUserId)) {
-    unLikeBtn.classList.add("activeLikeBtn");
-  } */
+  $(currentCommentContainer).append(commentButtons);
 
-  currentCommentContainer.appendChild(commentButtons);
+  $("#memeCommentsContainer").append(currentCommentContainer);
 
-  document
-    .getElementById("memeCommentsContainer")
-    .appendChild(currentCommentContainer);
-
-  replyButton.addEventListener("click", () => {
+  $(replyButton).click(() => {
     replyHTMLStructure(
       currentCommentContainer,
       currentMemeId,
@@ -243,40 +232,40 @@ function replyHTMLStructure(
   userName
 ) {
   const replyCommentSection = document.createElement("div");
-  replyCommentSection.className = "replyCommentSection";
+  $(replyCommentSection).addClass("replyCommentSection");
 
   const userAvatar = document.createElement("div");
-  userAvatar.className = "userAvatar";
-  userAvatar.innerText = userName;
-  replyCommentSection.appendChild(userAvatar);
+  $(userAvatar).addClass("userAvatar");
+  $(userAvatar).text(userName);
+  $(replyCommentSection).append(userAvatar);
 
   const textAreaSection = document.createElement("section");
-  textAreaSection.className = "textAreaSection";
+  $(textAreaSection).addClass("textAreaSection");
 
   const currentReplyComment = document.createElement("textarea");
-  currentReplyComment.className = "currentReplyComment";
+  $(currentReplyComment).addClass("currentReplyComment");
   currentReplyComment.setAttribute("rows", "1");
   currentReplyComment.setAttribute("placeholder", "Write a reply comment...");
-  textAreaSection.appendChild(currentReplyComment);
+  $(textAreaSection).append(currentReplyComment);
 
   const replyBtnSection = document.createElement("footer");
-  replyBtnSection.className = "replyBtnSection";
+  $(replyBtnSection).addClass("replyBtnSection");
 
   const cancelReplyBtn = document.createElement("a");
-  cancelReplyBtn.className = "cancelReplyBtn";
-  cancelReplyBtn.innerText = "Cancel";
-  replyBtnSection.appendChild(cancelReplyBtn);
+  $(cancelReplyBtn).addClass("cancelReplyBtn");
+  $(cancelReplyBtn).text("Cancel");
+  $(replyBtnSection).append(cancelReplyBtn);
 
-  cancelReplyBtn.addEventListener("click", () => {
-    currentReplyComment.value = "";
+  $(cancelReplyBtn).click(() => {
+    $(currentReplyComment).value = "";
   });
 
   const postReplyBtn = document.createElement("a");
-  postReplyBtn.className = "postReplyBtn";
-  postReplyBtn.innerText = "Post";
-  replyBtnSection.appendChild(postReplyBtn);
+  $(postReplyBtn).addClass("postReplyBtn");
+  $(postReplyBtn).text("Post");
+  $(replyBtnSection).append(postReplyBtn);
 
-  postReplyBtn.addEventListener("click", async () => {
+  $(postReplyBtn).click(async () => {
     postCommentFunction(
       currentReplyComment,
       currentMemeId,
@@ -288,8 +277,8 @@ function replyHTMLStructure(
     addCommentCountToUser("add", memeOwnerID);
   });
 
-  textAreaSection.appendChild(replyBtnSection);
-  replyCommentSection.appendChild(textAreaSection);
+  $(textAreaSection).append(replyBtnSection);
+  $(replyCommentSection).append(textAreaSection);
 
-  currentCommentContainer.appendChild(replyCommentSection);
+  $(currentCommentContainer).append(replyCommentSection);
 }

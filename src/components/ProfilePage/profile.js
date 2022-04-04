@@ -18,15 +18,11 @@ window.profile = async () => {
   const userSnap = await getDoc(userRef);
   const userData = userSnap.data();
 
-  document.getElementById("profileAvatar").appendChild(await createAvatar());
+  $("#profileAvatar").append(await createAvatar());
 
-  document.getElementById("userNameTitle").innerText = userData.name;
-  document.getElementById(
-    "totalLikes"
-  ).innerText = `Total likes: ${userData.like}`;
-  document.getElementById(
-    "totalComments"
-  ).innerText = `Total comments: ${userData.comments}`;
+  $("#userNameTitle").text(userData.name);
+  $("#totalLikes").text(`Total likes: ${userData.like}`);
+  $("#totalComments").text(`Total comments: ${userData.comments}`);
 
   const docRef = query(memesRef, where("userID", "==", user.uid));
   showPosts(docRef, "profilePage");

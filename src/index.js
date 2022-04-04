@@ -32,8 +32,8 @@ async function userButtons() {
 
   $("#userBtns").removeClass("hidden");
 
-  document.getElementById("profileButton").innerHTML = "";
-  document.getElementById("profileButton").appendChild(await createAvatar());
+  $("#profileButton").html("");
+  $("#profileButton").append(await createAvatar());
 }
 
 export async function createAvatar() {

@@ -20,7 +20,7 @@ window.go = async () => {
   }
 
   $("#showOnlyOwnPosts").click(() => {
-    document.getElementById("allMemes").innerText = "";
+    $("#allMemes").html("");
     if ($("#showOnlyOwnPosts").text() === "Show my posts") {
       docRef = query(
         memesRef,
