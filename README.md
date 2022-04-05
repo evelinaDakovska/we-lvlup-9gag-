@@ -1,6 +1,6 @@
 # 9GAG CLONE
 
-"9gag clone" is single page application build with JavaScript and Bootstrap. Only for educational purposes.
+"9gag clone" is single page application build with JavaScript and jQuery. Only for educational purposes.
 
 ## Main Features
 
