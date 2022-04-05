@@ -438,7 +438,8 @@ body {
 }
 .commentButtons .sectionBtns,
 .commentButtons .replyButton,
-.commentButtons .deleteButton {
+.commentButtons .deleteButton,
+.commentButtons .showRepliesBtn {
   margin-right: 10%;
   color: #999 !important;
   font-weight: bold;
@@ -447,7 +448,8 @@ body {
 }
 .commentButtons .sectionBtns:hover,
 .commentButtons .replyButton:hover,
-.commentButtons .deleteButton:hover {
+.commentButtons .deleteButton:hover,
+.commentButtons .showRepliesBtn:hover {
   color: #cecece !important;
 }
 
@@ -610,6 +612,11 @@ body {
   .content {
     margin-top: 20%;
   }
+}
+.repliesContainer {
+  width: 60%;
+  margin-top: 1%;
+  margin-left: 7%;
 }
 
 /*# sourceMappingURL=styles.css.map */

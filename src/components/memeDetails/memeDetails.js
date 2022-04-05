@@ -64,7 +64,13 @@ async function showAllComments(currentMemeId, memeOwnerID) {
   });
 }
 
-async function showPostComments(current, currentMemeId, memeOwnerID) {
+async function showPostComments(
+  current,
+  currentMemeId,
+  memeOwnerID,
+  isReply,
+  container
+) {
   const currentID = current.id;
   const currentCom = current.data();
   const docSnap = await getDoc(doc(db, "users", currentCom.userID));
@@ -73,7 +79,11 @@ async function showPostComments(current, currentMemeId, memeOwnerID) {
   const userId = user.uid;
 
   const currentCommentContainer = document.createElement("div");
-  $(currentCommentContainer).addClass("currentCommentContainer");
+  if (!isReply) {
+    $(currentCommentContainer).addClass("currentCommentContainer");
+  } else {
+    $(currentCommentContainer).addClass("repliesContainer");
+  }
 
   const userNameContainer = document.createElement("span");
   $(userNameContainer).addClass("userNameContainer");
@@ -88,10 +98,25 @@ async function showPostComments(current, currentMemeId, memeOwnerID) {
   const commentButtons = document.createElement("div");
   $(commentButtons).addClass("commentButtons");
 
-  const replyButton = document.createElement("a");
-  $(replyButton).text("Reply");
-  $(replyButton).addClass("replyButton");
-  $(commentButtons).append(replyButton);
+  if (!isReply) {
+    const replyButton = document.createElement("a");
+    $(replyButton).text("Reply");
+    $(replyButton).addClass("replyButton");
+    $(commentButtons).append(replyButton);
+
+    $(replyButton).click(() => {
+      $(".replyCommentSection").remove();
+      replyHTMLStructure(
+        currentCommentContainer,
+        currentMemeId,
+        userId,
+        currentID,
+        memeOwnerID,
+        userName,
+        currentID
+      );
+    });
+  }
 
   const likeBtn = document.createElement("div");
   $(likeBtn).addClass("upVoteBtn sectionBtns");
@@ -117,8 +142,23 @@ async function showPostComments(current, currentMemeId, memeOwnerID) {
     $(deleteButton).addClass("deleteButton");
     $(commentButtons).append(deleteButton);
     $(deleteButton).click(() => {
-      deleteComment(currentID, currentMemeId);
+      deleteComment(currentID, currentMemeId, memeOwnerID);
     });
+  }
+
+  if (!isReply) {
+    const showReplies = document.createElement("div");
+    $(showReplies).text("Replies");
+    $(showReplies).addClass("showRepliesBtn");
+    $(commentButtons).append(showReplies);
+    $(showReplies).click(() =>
+      showRepiesFunc(
+        currentID,
+        currentMemeId,
+        memeOwnerID,
+        currentCommentContainer
+      )
+    );
   }
 
   $(likeBtn).click(() =>
@@ -148,23 +188,16 @@ async function showPostComments(current, currentMemeId, memeOwnerID) {
 
   $("#memeCommentsContainer").append(currentCommentContainer);
 
-  $(replyButton).click(() => {
-    replyHTMLStructure(
-      currentCommentContainer,
-      currentMemeId,
-      userId,
-      currentID,
-      memeOwnerID,
-      userName
-    );
-  });
+  if (container) {
+    $(container).append(currentCommentContainer);
+  }
 }
 
-async function deleteComment(id, currentMemeId) {
+async function deleteComment(id, currentMemeId, memeOwnerID) {
   await deleteDoc(doc(db, "comments", id));
   addCommentCountToMeme("delete", currentMemeId);
-  addCommentCountToUser("delete", currentMemeId);
-  showAllComments(currentMemeId);
+  addCommentCountToUser("delete", memeOwnerID);
+  showAllComments(currentMemeId, memeOwnerID);
 }
 
 async function postCommentFunction(
@@ -229,7 +262,8 @@ function replyHTMLStructure(
   userId,
   parentCommentID,
   memeOwnerID,
-  userName
+  userName,
+  currentID
 ) {
   const replyCommentSection = document.createElement("div");
   $(replyCommentSection).addClass("replyCommentSection");
@@ -275,10 +309,50 @@ function replyHTMLStructure(
     currentReplyComment.value = "";
     addCommentCountToMeme("add", currentMemeId);
     addCommentCountToUser("add", memeOwnerID);
+    showRepiesFunc(
+      currentID,
+      currentMemeId,
+      memeOwnerID,
+      currentCommentContainer
+    );
   });
 
   $(textAreaSection).append(replyBtnSection);
   $(replyCommentSection).append(textAreaSection);
 
-  $(currentCommentContainer).append(replyCommentSection);
+  const ele = currentCommentContainer.querySelector(".repliesContainer");
+  if (ele) {
+    currentCommentContainer.insertBefore(replyCommentSection, ele);
+  } else {
+    $(currentCommentContainer).append(replyCommentSection);
+  }
 }
+
+async function showRepiesFunc(
+  currentID,
+  currentMemeId,
+  memeOwnerID,
+  currentCommentContainer
+) {
+  const q = query(
+    collection(db, "comments"),
+    where("parentCommentID", "==", currentID),
+    orderBy("timestamp", "desc")
+  );
+  const querySnapshot = await getDocs(q);
+  $(".repliesContainer").remove();
+  querySnapshot.forEach((doc) => {
+    showPostComments(
+      doc,
+      currentMemeId,
+      memeOwnerID,
+      "reply",
+      currentCommentContainer
+    );
+  });
+}
+
+/* function showReplyComment(doc) {
+  console.log(doc.comment);
+}
+ */

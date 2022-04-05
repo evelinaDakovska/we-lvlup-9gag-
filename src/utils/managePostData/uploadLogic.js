@@ -50,6 +50,8 @@ export async function uploadLogic() {
     timestamp: serverTimestamp(),
   });
 
+  $("#titleInput").val("");
+
   const uploadedSuccessfully = document.createElement("div");
   uploadedSuccessfully.innerHTML = "Uploaded successfully";
   const parentContainer = document.getElementById("modalUpload-style");
