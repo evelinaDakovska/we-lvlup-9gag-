@@ -16,6 +16,14 @@ if (localStorage.getItem("user") !== "{}") {
   userButtons();
 }
 
+$("#color-theme").click(() => {
+  if (!$("body").hasClass("dark-theme")) {
+    $("body").addClass("dark-theme");
+  } else {
+    $("body").removeClass("dark-theme");
+  }
+});
+
 export const auth = getAuth();
 
 export function onSignIn() {

@@ -6,6 +6,12 @@ body {
   align-items: center;
 }
 
+body.dark-theme,
+body.dark-theme * {
+  background-color: black !important;
+  color: white !important;
+}
+
 .navContainer {
   width: 100%;
   height: 7%;
@@ -19,6 +25,7 @@ body {
 .navigation {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   overflow: auto;
   position: fixed;
   background-color: white;
@@ -124,7 +131,8 @@ body {
 }
 
 #regButton,
-#uploadPageButton {
+#uploadPageButton,
+#color-theme {
   color: white;
   height: 80%;
   display: inline-flex;
@@ -136,11 +144,13 @@ body {
   border-radius: 18px;
 }
 #regButton:hover,
-#uploadPageButton:hover {
+#uploadPageButton:hover,
+#color-theme:hover {
   background-color: #005fcc;
 }
 #regButton #uploadSpan,
-#uploadPageButton #uploadSpan {
+#uploadPageButton #uploadSpan,
+#color-theme #uploadSpan {
   color: white;
 }
 
@@ -253,6 +263,10 @@ body {
   display: flex;
   justify-content: space-between;
   width: 80%;
+}
+
+.notImplemented {
+  cursor: not-allowed !important;
 }
 
 .wrapper {
