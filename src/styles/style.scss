@@ -151,6 +151,7 @@ body.dark-theme * {
   &:hover {
     color: #005fcc;
   }
+  padding: 0;
 }
 
 .showOnlyMine {
@@ -607,6 +608,9 @@ body.dark-theme * {
 @media (max-width: 580px) {
   .content {
     margin-top: 14%;
+  }
+  #main-btns {
+    display: flex;
   }
 }
 
