@@ -19,8 +19,12 @@ if (localStorage.getItem("user") !== "{}") {
 $("#color-theme").click(() => {
   if (!$("body").hasClass("dark-theme")) {
     $("body").addClass("dark-theme");
+    $("#sun").addClass("hidden");
+    $("#moon").removeClass("hidden");
   } else {
     $("body").removeClass("dark-theme");
+    $("#sun").removeClass("hidden");
+    $("#moon").addClass("hidden");
   }
 });
 

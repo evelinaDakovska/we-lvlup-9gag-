@@ -131,8 +131,7 @@ body.dark-theme * {
 }
 
 #regButton,
-#uploadPageButton,
-#color-theme {
+#uploadPageButton {
   color: white;
   height: 80%;
   display: inline-flex;
@@ -144,18 +143,19 @@ body.dark-theme * {
   border-radius: 18px;
 }
 #regButton:hover,
-#uploadPageButton:hover,
-#color-theme:hover {
+#uploadPageButton:hover {
   background-color: #005fcc;
 }
 #regButton #uploadSpan,
-#uploadPageButton #uploadSpan,
-#color-theme #uploadSpan {
+#uploadPageButton #uploadSpan {
   color: white;
 }
 
-#showOnlyOwnPosts,
-#showOnlyOwnPostsFresh {
+#color-theme *:hover {
+  color: #005fcc;
+}
+
+.showOnlyMine {
   color: white;
   line-height: 36px;
   padding: 0 16px;
@@ -163,8 +163,7 @@ body.dark-theme * {
   border-radius: 18px;
   margin-left: 30%;
 }
-#showOnlyOwnPosts:hover,
-#showOnlyOwnPostsFresh:hover {
+.showOnlyMine:hover {
   background-color: #005fcc;
 }
 
@@ -382,7 +381,7 @@ body.dark-theme * {
   align-items: center;
 }
 
-#userAvatar {
+.userAvatar {
   border-radius: 50%;
   background-color: #07f;
   display: flex;
@@ -500,6 +499,7 @@ body.dark-theme * {
 }
 
 .replyCommentSection {
+  display: flex;
   width: 60%;
   margin-top: 1%;
   margin-left: 7%;
@@ -631,6 +631,10 @@ body.dark-theme * {
   width: 60%;
   margin-top: 1%;
   margin-left: 7%;
+}
+
+.textAreaSection {
+  width: 100%;
 }
 
 /*# sourceMappingURL=styles.css.map */

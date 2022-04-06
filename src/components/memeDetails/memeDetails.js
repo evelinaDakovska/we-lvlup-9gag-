@@ -111,8 +111,7 @@ async function showPostComments(
         currentMemeId,
         userId,
         currentID,
-        memeOwnerID,
-        userName,
+        memeOwnerID,  
         currentID
       );
     });
@@ -256,13 +255,12 @@ async function addCommentCountToUser(action, userId) {
   });
 }
 
-function replyHTMLStructure(
+async function replyHTMLStructure(
   currentCommentContainer,
   currentMemeId,
   userId,
   parentCommentID,
   memeOwnerID,
-  userName,
   currentID
 ) {
   const replyCommentSection = document.createElement("div");
@@ -270,7 +268,7 @@ function replyHTMLStructure(
 
   const userAvatar = document.createElement("div");
   $(userAvatar).addClass("userAvatar");
-  $(userAvatar).text(userName);
+  $(userAvatar).append(await createAvatar());
   $(replyCommentSection).append(userAvatar);
 
   const textAreaSection = document.createElement("section");

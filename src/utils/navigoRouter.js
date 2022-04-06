@@ -13,6 +13,11 @@ const routes = {
     script: "./src/components/FreshPage/fresh.js",
     func: "fresh",
   },
+  "/trending": {
+    path: "./src/components/trendingPage/trending.html",
+    script: "./src/components/trendingPage/trending.js",
+    func: "trending",
+  },
   "/profile": {
     path: "./src/components/ProfilePage/profile.html",
     script: "./src/components/ProfilePage/profile.js",
@@ -48,6 +53,10 @@ router.on("/index.html", () => {
 router.on("/fresh", () => {
   const route = routes["/fresh"];
   reuseFuncOnRoute(route, "/fresh");
+});
+router.on("/trending", () => {
+  const route = routes["/trending"];
+  reuseFuncOnRoute(route, "/trending");
 });
 router.on("/profile", () => {
   const route = routes["/profile"];
