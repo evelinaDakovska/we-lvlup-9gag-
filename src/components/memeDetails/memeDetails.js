@@ -111,7 +111,7 @@ async function showPostComments(
         currentMemeId,
         userId,
         currentID,
-        memeOwnerID,  
+        memeOwnerID,
         currentID
       );
     });
@@ -289,7 +289,7 @@ async function replyHTMLStructure(
   $(replyBtnSection).append(cancelReplyBtn);
 
   $(cancelReplyBtn).click(() => {
-    $(currentReplyComment).value = "";
+    currentReplyComment.value = "";
   });
 
   const postReplyBtn = document.createElement("a");

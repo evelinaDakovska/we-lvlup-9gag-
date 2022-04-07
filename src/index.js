@@ -19,12 +19,12 @@ if (localStorage.getItem("user") !== "{}") {
 $("#color-theme").click(() => {
   if (!$("body").hasClass("dark-theme")) {
     $("body").addClass("dark-theme");
-    $("#sun").addClass("hidden");
-    $("#moon").removeClass("hidden");
-  } else {
-    $("body").removeClass("dark-theme");
     $("#sun").removeClass("hidden");
     $("#moon").addClass("hidden");
+  } else {
+    $("body").removeClass("dark-theme");
+    $("#sun").addClass("hidden");
+    $("#moon").removeClass("hidden");
   }
 });
 
@@ -35,7 +35,7 @@ export function onSignIn() {
   $("#registerModal").modal("hide");
   $("#loginModal").modal("hide");
   userButtons();
-  router.navigate("/profile");
+  router.navigate("/");
 }
 
 async function userButtons() {

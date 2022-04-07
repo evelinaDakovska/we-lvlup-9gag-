@@ -21,6 +21,11 @@ async function signUpWithEmail() {
     const password = passwordField.value;
     const fName = fullName.value;
 
+    if (!email || !password || !fName) {
+      alert("All fields are mandatory!");
+      return;
+    }
+
     createUserWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
         localStorage.setItem("user", JSON.stringify(userCredential.user));
@@ -39,7 +44,7 @@ async function signUpWithEmail() {
         }, 2000);
       })
       .catch((error) => {
-       alert(error.code);
+        alert(error.code);
       });
   };
 

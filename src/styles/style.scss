@@ -496,7 +496,7 @@ body.dark-theme * {
 .replyCommentSection {
   display: flex;
   width: 60%;
-  margin-top: 1%;
+  margin-top: 2%;
   margin-left: 7%;
 }
 
@@ -589,6 +589,20 @@ body.dark-theme * {
   }
   .content {
     margin-top: 10%;
+    overflow: hidden;
+  }
+  #loginButton,
+  #regButton {
+    height: 10%;
+    width: auto;
+    margin: 0;
+    padding: 2px;
+  }
+  #titleInput,
+  #uploadFile,
+  .otherSource,
+  #uploadBtn {
+    width: 100%;
   }
 }
 
@@ -602,6 +616,19 @@ body.dark-theme * {
   }
   #freshNavBtn {
     display: contents !important;
+  }
+  .content {
+    width: 95%;
+  }
+  #color-theme,
+  #userBtns {
+    padding: 0;
+  }
+  #memeCommentsContainer {
+    width: 90%;
+  }
+  .replyCommentSection {
+    width: 90%;
   }
 }
 
