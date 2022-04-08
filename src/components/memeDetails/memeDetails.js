@@ -350,7 +350,4 @@ async function showRepiesFunc(
   });
 }
 
-/* function showReplyComment(doc) {
-  console.log(doc.comment);
-}
- */
+

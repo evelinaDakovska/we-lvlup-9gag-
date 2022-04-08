@@ -16,9 +16,7 @@ export default function signOutFunc() {
       $("#regButton").removeClass("hidden");
       router.navigate("/fresh");
     })
-    .catch((error) => {
-      console.log(error.message);
-    });
+    .catch(() => {});
 }
 
 $("#signOutButton").click(signOutFunc);

@@ -78,9 +78,7 @@ export function showSingleMeme(meme, divId) {
     .then((url) => {
       memeImg.setAttribute("src", url);
     })
-    .catch((error) => {
-      console.log(error);
-    });
+    .catch(() => {});
 
   const imgContainer = document.createElement("div");
   imgContainer.className = "imgContainer";
