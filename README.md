@@ -2,7 +2,7 @@
 
 "9gag clone" is single page application build with JavaScript and jQuery. Only for educational purposes.
 
-[Link to deployed project](https://singular-paletas-6073e6.netlify.app/){:target="\_blank"}
+[Link to deployed project](https://singular-paletas-6073e6.netlify.app/)
 
 ## Main Features
 
